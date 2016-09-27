@@ -331,14 +331,12 @@ angular.module('your_app_name', [
         templateUrl: "views/app/band.html",
         controller: "BandCtrl"
       }
-    }/* ,
-    resolve: {
+    }/*  ,
+     resolve: {
       Bandlist: function(Bands){
-		var lists = Bands.list();
-		console.log(lists);
-        return lists;
+		return Bands.list();
       }
-    } */
+    }   */
   })
   
   

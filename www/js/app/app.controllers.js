@@ -392,11 +392,43 @@ angular.module('your_app_name.app.controllers', [])
 
 })
 
-.controller('BandCtrl', function($scope , _, Bands ) {
+.controller('BandCtrl', function($scope , $http, Bands) {
    
-   $scope.bandlist = Bands.list();
+   
+    $scope.bandlist = "";
+    $http.get('http://www.gigsmanila.com/api/bands/1/20/')
+    .success(function(data, status, headers,config){
+      console.log('data success');
+      console.log(data); // for browser console
+      $scope.bandlist = data; // for UI
+    })
+    .error(function(data, status, headers,config){
+      console.log('data error');
+    })
+    .then(function(result){
+      things = result.data;
+    });
+ 
+   
+   
+/*   this.bandlist = Bands.list(); */
+    
+   
+   /*  $http.get('http://www.gigsmanila.com/api/bands/1/20/').success(function(bands) {
+	  //
+	   var bandlist = _.each(bands, function(band){
+		   //console.log(band);
+		   return band;
+      });
+	  
+	  
+	  $scope.result = "";
+	  }) */
+   /* 
+   
+   $scope.bandlist = ;
    console.log($scope.bandlist);
-  return $scope.bandlist;
+  return $scope.bandlist; */
 
 })
 .controller('VenueCtrl', function($scope) {

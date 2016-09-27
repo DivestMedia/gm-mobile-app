@@ -1,11 +1,35 @@
-<ion-view class="gigs-view"  view-title="Bands">
+<ion-view class="people-view"  view-title="Bands">
   <ion-content>
-  Bands list here
-      cccc
-   <div class="suggested-people-list">cccc
+  
+  
+  
+  <div class="suggested-people-list">
       <div class="suggested-people row" ng-repeat="band in bandlist">
-        {{band.name}} {{band.ID}}
+        <div class="col col-center col-user-image">
+          <!-- We need a wrapper with width set for the preload image directive -->
+          <div class="user-image-outer">
+            <a ui-sref="app.band.profile({bandID: band.ID})">
+              <pre-img ratio="_1_1" helper-class="square-image">
+                <img class="user-image" ng-src="{{band.thumb}}" spinner-on-load>
+              </pre-img>
+            </a>
+          </div>
+        </div>
+        <div class="col col-center">
+          <div class="row user-data">
+            <div class="col">
+              <a class="name" ui-sref="app.band.profile({bandID: band.ID})">{{band.name}}</a>
+              <span class="brief-info">{{band.genre}}</span>
+            </div>
+            <!-- <div class="action-col col-center">
+              <a class="button button-small button-outline button-block follow-button">
+                Follow
+              </a>
+            </div> -->
+          </div>
+        </div>
       </div>
     </div>
+  
   </ion-content>
 </ion-view>
