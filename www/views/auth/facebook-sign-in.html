@@ -3,7 +3,7 @@
     <ion-nav-back-button>
     </ion-nav-back-button>
     <ion-nav-buttons side="right">
-      <a class="button button-clear button-light" ui-sref="app.feed">
+      <a class="button button-clear button-light" ui-sref="app.gigsmap">
         Skip
       </a>
     </ion-nav-buttons>
@@ -20,13 +20,14 @@
       </div>
       <div class="bottom-content row">
         <div class="col col-bottom">
-          <a class="facebook-sign-in button-large button button-block" ng-click="facebookSignIn()">
-            Sign In with Facebook
+          <!-- <a class="facebook-sign-in button-large button button-block" ng-click="facebookSignIn()"> -->
+          <a class="facebook-sign-in button-large button button-block"  ui-sref="app.gigsmap">
+            Go to Home
           </a>
-          <a class="dont-have-facebook button button-clear button-block" ui-sref="dont-have-facebook">
+         <!--  <a class="dont-have-facebook button button-clear button-block" ui-sref="dont-have-facebook">
             Don't have Facebook?
           </a>
-          <section ng-include="'views/app/legal/legal-notice.html'"></section>
+          <section ng-include="'views/app/legal/legal-notice.html'"></section> -->
         </div>
       </div>
     </div>
