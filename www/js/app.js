@@ -278,6 +278,64 @@ angular.module('your_app_name', [
     templateUrl: "views/auth/welcome-back.html",
     controller: 'WelcomeBackCtrl'
   })
+  
+  
+  
+  
+    .state('app.gigsmap', {
+    url: "/gigsmap",
+    views: {
+      'menuContent': {
+        templateUrl: "views/app/gigsmap.html",
+        controller: "MapCtrl"
+      }
+    },
+    resolve: {
+      loggedUser: function(AuthService){
+        return AuthService.getLoggedUser();
+      },
+      feed: function(FeedService){
+        // Default page is 1
+        var page = 1;
+
+        return FeedService.getFeed(page);
+      }
+    }
+  })
+  
+  .state('app.gigs', {
+    url: "/gigs",
+    views: {
+      'menuContent': {
+        templateUrl: "views/app/gigs.html",
+        controller: "GigsCtrl"
+      }
+    }
+  })
+  
+  .state('app.venue', {
+    url: "/venue",
+    views: {
+      'menuContent': {
+        templateUrl: "views/app/venue.html",
+        controller: "VenueCtrl"
+      }
+    }
+  })
+  
+    
+  .state('app.band', {
+    url: "/band",
+    views: {
+      'menuContent': {
+        templateUrl: "views/app/band.html",
+        controller: "VenueCtrl"
+      }
+    }
+  })
+  
+  
+  
 ;
 
 

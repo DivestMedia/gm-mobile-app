@@ -385,4 +385,20 @@ angular.module('your_app_name.app.controllers', [])
   $scope.post = post;
 })
 
+.controller('MapCtrl', function($scope) {
+
+})
+.controller('GigsCtrl', function($scope) {
+
+})
+
+.controller('BandCtrl', function($scope) {
+
+})
+.controller('VenueCtrl', function($scope) {
+
+})
+
+
+
 ;
