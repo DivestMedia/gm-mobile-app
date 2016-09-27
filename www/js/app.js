@@ -329,7 +329,7 @@ angular.module('your_app_name', [
     views: {
       'menuContent': {
         templateUrl: "views/app/band.html",
-        controller: "VenueCtrl"
+        controller: "BandCtrl"
       }
     }
   })

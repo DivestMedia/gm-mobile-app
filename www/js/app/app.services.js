@@ -365,4 +365,25 @@ angular.module('your_app_name.app.services', [])
 })
 
 
+
+.service('Bands', function ($http, $q ){
+//var dfd = $rootScope.defer();
+ return {
+    list: function () {
+      var bands = $http.get('http://www.gigsmanila.com/api/bands/1/20/');
+	  //console.log(bands);
+      //dfd.resolve(bands);
+	  return bands;
+    },
+    get: function () {
+      return 'tes';//$http.get('https://friends.json/getOne', { params: { user_id: $rootScope.session, chat_id: $stateParams.idchat } })
+    },
+    add: function (id) {
+      return $http.get('https://friends.json/new', { params: {idfriends:id}})
+    }
+  };
+
+})
+
+
 ;

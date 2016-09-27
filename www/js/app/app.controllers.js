@@ -392,8 +392,12 @@ angular.module('your_app_name.app.controllers', [])
 
 })
 
-.controller('BandCtrl', function($scope) {
-
+.controller('BandCtrl', function($scope , Bands) {
+  Bands.list().success(function (response) {
+   // $scope.chats = response;
+   
+   console.log(response);
+  })
 })
 .controller('VenueCtrl', function($scope) {
 
