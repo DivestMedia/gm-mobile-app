@@ -370,10 +370,21 @@ angular.module('your_app_name.app.services', [])
 //var dfd = $rootScope.defer();
  return {
     list: function () {
-      var bands = $http.get('http://www.gigsmanila.com/api/bands/1/20/');
-	  //console.log(bands);
+	  var dfd = $q.defer();
+      $http.get('http://www.gigsmanila.com/api/bands/1/20/').success(function(bands) {
+	  //
       //dfd.resolve(bands);
-	  return bands;
+	   var bandlist = _.each(bands, function(band){
+		   //console.log(band);
+		   return band;
+      });
+       // return band;
+      dfd.resolve(bandlist);
+	  
+	  
+	  console.log(bandlist);
+	  return dfd.promise;
+	  })
     },
     get: function () {
       return 'tes';//$http.get('https://friends.json/getOne', { params: { user_id: $rootScope.session, chat_id: $stateParams.idchat } })
