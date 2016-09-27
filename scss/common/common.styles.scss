@@ -1,0 +1,222 @@
+ion-nav-bar,
+ion-modal-view
+{
+	ion-header-bar
+	{
+		background-color: $default-bar-bg !important;
+		background: $default-bar-bg !important;
+		border: none !important;
+		background-size: 0px !important; // To remove bottom border on header
+
+		.title
+		{
+			text-transform: capitalize;
+		}
+	}
+}
+
+ion-nav-bar
+{
+	*
+	{
+		color: $default-bar-color;
+
+		.buttons button::before
+		{
+			color: $default-bar-color;
+		}
+	}
+}
+
+// Preload images aux styles (ratios)
+// Auto generate ratios for the whole app (see: http://stackoverflow.com/a/18120181/1116959)
+@each $ratio in $pre-img-ratios {
+  .pre-img._#{nth($ratio, 1)}_#{nth($ratio, 2)}
+  {
+    // Conserve aspect ratio (see: http://stackoverflow.com/a/10441480/1116959)
+    width: 100%;
+    @include calc(padding-bottom, "#{( nth($ratio, 2) / nth($ratio, 1)) * 100}%");
+  }
+}
+
+.pre-img
+{
+  position: relative;
+  background-color: $pre-img-bg;
+  border-radius: 2px;
+
+	// If the image is rounded
+	&.rounded-image
+	{
+		border-radius: 50%;
+	}
+
+  &.finish-loading
+  {
+    background-color: transparent;
+    border: none;
+
+		img
+	  {
+			visibility: visible;
+			opacity: 1;
+	  }
+  }
+
+  img
+  {
+    position: absolute;
+		left: 0px;
+		top: 0px;
+		visibility: hidden;
+		opacity: 0;
+		@include transition(visibility 0s linear, opacity 0.5s linear);
+  }
+}
+
+// spinner-on-load
+@include keyframes(spin) {
+  from {
+    @include transform(rotate(0deg));
+  }
+  to {
+    @include transform(rotate(359deg));
+  }
+}
+.spinner-on-load
+{
+	position: absolute;
+	font-size: $spinner-size;
+	width: $spinner-size;
+	height: $spinner-size;
+	line-height: $spinner-size;
+  color: $spinner-color;
+	@include animation(spin 2s infinite linear);
+	@include calc(top, "50% - #{($spinner-size/2)}");
+	@include calc(left, "50% - #{($spinner-size/2)}");
+}
+ion-spinner.spinner-on-load
+{
+	@include animation(none);
+  stroke: $spinner-color;
+	width: $spinner-svg-size;
+  height: $spinner-svg-size;
+	line-height: inherit;
+	@include calc(top, "50% - #{($spinner-svg-size/2)}");
+	@include calc(left, "50% - #{($spinner-svg-size/2)}");
+}
+
+// Multimedia background
+.multi-bg-outer
+{
+  position: relative;
+  background-color: rgba(darken($multi-bg, 10%), 0.7);
+  height: 100%;
+  @include transition(all ease-in-out .3s);
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: -2;
+
+  &.finish-loading
+  {
+    background-color: transparent;
+  }
+
+  .bg-overlay
+  {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: $overlay-bg;
+    z-index: -1;
+    opacity: 0.6;
+  }
+
+  .multi-bg
+  {
+    display: none;
+  }
+}
+
+@mixin postCategories ($tag, $color) {
+	&.#{($tag)}
+	{
+		border-color: $color;
+		background-color: rgba(lighten($color, 10), .7);
+		color: $theme-color-1;
+	}
+}
+
+.post-category
+{
+	border-right: 2px solid darken($tag-default-bg, 10%);
+	background-color: $tag-default-bg;
+	color: darken($tag-default-bg, 50%);
+
+	@include postCategories("technology", $tag-2-bg);
+	@include postCategories("politics", $tag-1-bg);
+	@include postCategories("entertainment", $tag-5-bg);
+	@include postCategories("sports", $tag-3-bg);
+	@include postCategories("business", $tag-4-bg);
+	@include postCategories("world", $tag-6-bg);
+	@include postCategories("fashion", $tag-7-bg);
+	@include postCategories("art", $tag-8-bg);
+	@include postCategories("news", $tag-9-bg);
+	@include postCategories("highlights", $tag-10-bg);
+}
+
+@mixin cardActionTabs ($bg, $color) {
+  .item.tabs
+  {
+    background-color: $bg;
+    color: $color;
+    border-top: 1px solid darken($bg, 5) !important;
+    height: 36px;
+    line-height: 36px;
+
+    .tab-item
+    {
+      font-size: 13px;
+      opacity: 1;
+      color: rgba($color, .85);
+			line-height: 35px;
+
+      &.activated
+      {
+        color: darken($color, 10);
+        font-weight: 500;
+      }
+
+      &:last-child
+      {
+        border-right: none;
+      }
+
+      .icon::before
+      {
+        line-height: 40px;
+        font-size: 20px;
+      }
+
+      .icon
+      {
+        margin-top: -4px;
+
+				&.theme-icon
+				{
+					margin-top: 0px;
+  				height: 100%;
+
+					&::before
+					{
+						line-height: 35px;
+						vertical-align: bottom;
+					}
+				}
+      }
+    }
+  }
+}

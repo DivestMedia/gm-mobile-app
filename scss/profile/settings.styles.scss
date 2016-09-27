@@ -1,0 +1,31 @@
+.settings-view
+{
+  background-color: $settings-page-bg;
+
+  .list
+  {
+    .item
+    {
+      font-size: 14px;
+      padding: 10px;
+      color: $settings-page-color;
+
+      &.item-divider
+      {
+        text-transform: uppercase;
+        padding-top: 16px;
+        padding-bottom: 4px;
+
+        @include item-style($settings-page-divider-bg, darken($settings-page-divider-bg, 5%), $settings-page-divider-color);
+      }
+
+      &.settings-option
+      {
+        .item-note
+        {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}

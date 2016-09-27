@@ -1,0 +1,44 @@
+<ion-view view-title="Settings" class="settings-view">
+  <ion-content>
+    <div class="list">
+      <div class="item item-divider title">
+        Account
+      </div>
+      <a class="item settings-option">
+        Edit Profile
+        <span class="item-note">
+          <i class="icon ion-ios-arrow-right"></i>
+        </span>
+      </a>
+      <a class="item settings-option">
+        Change Password
+        <span class="item-note">
+          <i class="icon ion-ios-arrow-right"></i>
+        </span>
+      </a>
+      <div class="item item-divider title">
+        More
+      </div>
+      <a class="item settings-option" ng-click="showTerms()">
+        <!-- <i class="icon ion-ios-information-outline"></i> -->
+        Terms of Service
+      </a>
+      <a class="item settings-option" ng-click="showPrivacyPolicy()">
+        <!-- <i class="icon ion-ios-locked-outline"></i> -->
+        Privacy Policy
+      </a>
+      <a class="item settings-option">
+        <!-- <i class="icon ion-ios-help-outline"></i> -->
+        Help
+      </a>
+      <a class="item settings-option" ng-controller="AppRateCtrl" ng-click="appRate()">
+        <!-- <i class="icon ion-ios-star-half"></i> -->
+        App Rate
+      </a>
+      <a class="item settings-option" ui-sref="facebook-sign-in">
+        <!-- <i class="icon ion-ios-close-outline"></i> -->
+        Sign Out
+      </a>
+    </div>
+  </ion-content>
+</ion-view>

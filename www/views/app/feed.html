@@ -1,0 +1,73 @@
+<ion-view class="feed-view" ng-class="{'filtered-feed': (is_trend_feed || is_category_feed)}">
+  <ion-nav-title>
+    <span ng-if="is_category_feed">{{ current_category.name }} Feed</span>
+    <span ng-if="is_trend_feed">{{ current_trend.name }} Feed</span>
+    <span ng-if="!is_trend_feed && !is_category_feed">Feed</span>
+  </ion-nav-title>
+  <ion-content>
+    <!-- Refresh to get the new posts -->
+    <ion-refresher pulling-text="Pull to refresh..." on-refresh="getNewData()">
+    </ion-refresher>
+
+    <div ng-if="is_trend_feed || is_category_feed" class="row filtered-feed-header-outer">
+      <div ng-if="is_category_feed" class="col filtered-feed-header">
+        <div multi-bg="[current_category.image]" interval="3000" helper-class="category-with-image">
+          <div class="filtered-feed-header-content">
+            <h2 class="header-title">{{ current_category.name }}</h2>
+          </div>
+        </div>
+      </div>
+      <div ng-if="is_trend_feed" class="col filtered-feed-header">
+        <div multi-bg="[current_trend.image]" interval="3000" helper-class="category-with-image">
+          <div class="filtered-feed-header-content">
+            <h2 class="header-title">{{ current_trend.name }}</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div ng-if="!is_trend_feed && !is_category_feed" ng-controller="NewPostCtrl" class="card new-post">
+      <div class="item item-avatar">
+        <div class="card-avatar-image-outer">
+          <pre-img ratio="_1_1" helper-class="avatar-image">
+            <img ng-src="{{loggedUser.picture}}" spinner-on-load>
+          </pre-img>
+        </div>
+        <a class="new-post-call-to-action" ng-click="newStatusPost()">
+          <h3 class="new-post-copy">What's on your mind?</h3>
+        </a>
+      </div>
+      <div class="item tabs tabs-icon-left">
+        <a class="tab-item" ng-click="newStatusPost()">
+          <i class="icon ion-edit"></i>
+          Status
+        </a>
+        <a class="tab-item" ng-click="newImageStatusPost()">
+          <i class="icon ion-camera"></i>
+          Photo
+        </a>
+        <a class="tab-item" ng-click="checkinStatusPost()">
+          <i class="icon ion-location"></i>
+          Checkin
+        </a>
+      </div>
+    </div>
+
+    <div class="feed-cards-outer">
+      <div ng-if="cards.length > 0" ng-repeat="card in cards" class="post-card-outer">
+        <!-- <section ng-include="'views/app/partials/feed-post-card.html'" class="post-card-outer"></section> -->
+        <section ng-include="'views/app/partials/feed-post-card.html'"></section>
+      </div>
+      <div ng-if="cards.length == 0" class="row row-center empty-feed-outer">
+        <div class="col">
+          <i class="empty-feed-icon icon ion-sad-outline"></i>
+          <h2 class="empty-feed-text">No posts here</h2>
+        </div>
+      </div>
+    </div>
+
+    <!-- Infinit scroll -->
+    <ion-infinite-scroll ng-if="moreDataCanBeLoaded()" on-infinite="loadMoreData()" distance="2%">
+    </ion-infinite-scroll>
+  </ion-content>
+</ion-view>

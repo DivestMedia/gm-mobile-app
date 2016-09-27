@@ -1,0 +1,17 @@
+.modal-view.legal-view
+{
+  background-color: $modal-bg;
+
+	ion-header-bar
+	{
+		background-color: $modal-bg !important;
+	}
+
+  .modal-title
+  {
+    color: $modal-color;
+    font-size: 22px;
+    font-weight: 400;
+		font-size: 16px;
+	}
+}

@@ -1,0 +1,197 @@
+.profile-view
+{
+	background-color: $profile-subviews-bg;
+	@include background-image(linear-gradient(top, $profile-user-content-bg 0%,$profile-user-content-bg 50%,$profile-subviews-bg 50%,$profile-subviews-bg 100%));
+
+
+	// $bar-height is an ionic variable
+	.profile-details-outer
+	{
+		@include calc(min-height, "100vh - #{($bar-height)}");
+		background-color: $profile-subviews-bg !important;
+
+		.profile-details
+		{
+			height: initial;
+  		bottom: initial;
+			position: absolute;
+		}
+	}
+
+	.profile-details-section
+	{
+	  background-color: $profile-user-content-bg;
+
+		&:first-child
+		{
+			padding-top: 10px;
+		}
+	}
+
+	.user-image-outer
+	{
+		.pre-img
+		{
+			border-radius: 8px;
+		}
+
+		.user-image
+		{
+			width: 100%;
+			border-radius: 8px;
+		}
+	}
+
+	.user-details-top
+	{
+		padding: 0px 0px 3px 0px;
+	}
+
+	.user-details-bottom
+	{
+		margin-top: 0px;
+		padding: 0px 2px;
+
+		.user-action-outer
+		{
+			padding: 0px;
+
+			.button
+			{
+				margin: 0px;
+				min-height: 22px;
+  			line-height: 22px;
+				font-weight: 500;
+
+/Users/dayu/pico_y_pala/ionsocialapp/scss/profile/button-outline($profile-user-content-button-bg); not found
+				@include button-style($profile-user-content-button-bg, $profile-user-content-button-border, $profile-user-content-button-active-bg, $profile-user-content-button-active-border, $profile-user-content-button-text);
+
+				.icon
+				{
+					margin-right: 5px;
+
+					&::before
+					{
+						font-size: 14px;
+					}
+				}
+			}
+		}
+	}
+
+	.user-detail-item
+	{
+		text-align: center;
+		padding: 0px 2px;
+		color: $profile-user-content-color;
+
+		& > a
+		{
+			text-decoration: none;
+			color: $profile-user-content-color;
+		}
+
+		.item-name,
+		.item-count
+		{
+			display: block;
+		}
+
+		.item-name
+		{
+			font-size: 13px;
+			line-height: 20px;
+			color: rgba($profile-user-content-color, .6);
+		}
+
+		.item-count
+		{
+			font-size: 18px;
+			line-height: 18px;
+		}
+	}
+
+	.user-info
+	{
+		.user-name
+		{
+			font-size: 15px;
+			font-weight: 600;
+			margin: 8px 0px 4px 0px;
+			color: $profile-user-content-color;
+		}
+
+		.user-description
+		{
+			line-height: 16px;
+		}
+
+		.user-description,
+		.user-contact,
+		.user-site
+		{
+			font-size: 13px;
+			margin-bottom: 2px;
+			color: rgba($profile-user-content-color, .6);
+		}
+
+		.user-site a
+		{
+			color: $profile-user-content-active-color;
+			text-decoration: none;
+		}
+	}
+
+	.split-actions
+	{
+		border-top: 1px solid darken($profile-user-content-actions-bg, 5);
+		border-bottom: 1px solid darken($profile-user-content-actions-bg, 5);
+		margin: 0px;
+		padding: 0px;
+		background-color: $profile-user-content-actions-bg;
+		background-image: none;
+
+		.user-interaction
+		{
+			text-align: center;
+			padding: 0px;
+
+			// $bar-footer-height is an ionic variable
+			.user-interaction-tab
+			{
+				margin: 0px;
+				min-height: $bar-footer-height;
+				text-transform: uppercase;
+			  font-size: 13px;
+			  font-weight: 600;
+				color: rgba($profile-user-content-actions-color, .85);
+
+				&.active
+				{
+					color: $profile-user-content-active-color;
+					opacity: 1;
+				}
+
+				.icon
+				{
+					margin-right: 5px;
+				}
+			}
+		}
+	}
+
+	.profile-sub-views-outer
+	{
+		height: initial;
+		position: relative;
+		background-color: $profile-subviews-bg !important;
+
+		.profile-sub-view
+		{
+			height: initial;
+  		bottom: initial;
+			background-color: $profile-subviews-bg !important;
+			position: relative;
+		}
+	}
+}

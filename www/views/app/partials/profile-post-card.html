@@ -1,0 +1,23 @@
+<div class="card-7">
+  <div class="card">
+    <div class="row card-content-wrapper">
+      <div class="col col-33 image-wrapper">
+        <a class="card-image-anchor" ui-sref="app.post({ postId: post.id })">
+          <pre-img ratio="_1_1" helper-class="profile-post-image">
+            <img class="post-image" ng-src="{{post.picture}}" spinner-on-load>
+          </pre-img>
+        </a>
+      </div>
+      <div class="col card-data">
+        <a class="card-title-outer" ui-sref="app.post({ postId: post.id })">
+          <h2 class="card-title">{{post.title}}</h2>
+        </a>
+        <div class="actions-brief">
+          <a class="subdued">{{post.likes}} Likes</a>
+          <a ng-controller="CommentsCtrl" ng-click="showComments(post)" class="subdued">{{post.comments}} Comments</a>
+          <a class="subdued">{{post.shares}} Shares</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,85 @@
+.menu-outer
+{
+  background-color: $menu-bg;
+
+  .menu-items-list .list
+  {
+    padding-top: $menu-top-items-padding;
+  }
+
+  .menu-bottom-options
+  {
+    padding-top: $menu-bottom-items-padding;
+  }
+
+  ion-item
+  {
+    background: transparent;
+    border: none;
+    color: rgba(darken($menu-color, 2%), .7);
+
+    .menu-text
+    {
+      color: rgba(darken($menu-color, 2%), .7);
+      font-weight: 500;
+    }
+
+    .menu-icon
+    {
+      color: rgba(lighten($menu-icon-color, 50%), .3);
+    }
+
+    .item-pointer-icon
+    {
+      font-size: 16px;
+      right: 0px;
+      color: rgba(lighten($menu-icon-color, 50%), .3);
+    }
+
+    .item-content
+    {
+      background: transparent !important;
+
+      // For right item pointer icon
+      // $item-icon-font-size, $item-padding are Ionic variables
+      padding-right: $item-icon-font-size !important;
+      padding-left: (ceil( ($item-padding * 3) + ($item-padding / 3) ) + 5) !important;
+
+      // When user press the item
+      &.activated
+      {
+        border-color: transparent;
+        background-color: transparent;
+        color: $menu-color;
+
+        .menu-text
+        {
+          color: rgba(lighten($menu-icon-color, 50%), .3);
+        }
+      }
+    }
+
+    &.active
+    {
+      border-color: transparent;
+      background-color: transparent;
+
+      .item-content
+      {
+        border-color: transparent;
+        background-color: transparent;
+        color: $menu-icon-color;
+      }
+
+      .menu-icon
+      {
+        color: $menu-icon-color;
+      }
+
+      .menu-text
+      {
+        color: $menu-icon-color;
+      }
+    }
+  }
+}

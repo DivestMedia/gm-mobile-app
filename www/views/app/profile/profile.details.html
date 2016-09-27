@@ -1,0 +1,75 @@
+<ion-view class="profile-details" view-title="Profile">
+  <div class="row profile-details-section">
+    <div class="col col-center col-25">
+      <!-- We need a wrapper with width set for the preload image directive -->
+      <div class="user-image-outer">
+        <pre-img ratio="_1_1" helper-class="rounded-image">
+          <img class="user-image" ng-src="{{user.picture}}" spinner-on-load>
+        </pre-img>
+      </div>
+    </div>
+    <div class="col col-center">
+      <div class="row user-details-top">
+        <div class="col user-detail-item">
+          <b class="item-count">{{user.posts.length}}</b>
+          <span class="item-name">posts</span>
+        </div>
+        <div class="col user-detail-item">
+          <a ui-sref="app.profile.followers({userId: currentUserId})">
+            <b class="item-count">{{user.followers.length}}</b>
+            <span class="item-name">followers</span>
+          </a>
+        </div>
+        <div class="col user-detail-item">
+          <a ui-sref="app.profile.following({userId: currentUserId})">
+            <b class="item-count">{{user.following.length}}</b>
+            <span class="item-name">following</span>
+          </a>
+        </div>
+      </div>
+      <div class="row user-details-bottom" ng-if="!myProfile">
+        <div class="col user-action-outer">
+          <a class="button button-small button-block button-outline">
+            <i class="icon ion-plus-round"></i> FOLLOW
+          </a>
+        </div>
+      </div>
+      <div class="row user-details-bottom" ng-if="myProfile">
+        <div class="col user-action-outer">
+          <a class="button button-small button-block button-outline" ui-sref="app.settings">
+            <i class="icon ion-gear-a"></i> SETTINGS
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row profile-details-section">
+    <div class="col user-info">
+      <h4 class="user-name">{{user.name.first}} {{user.name.last}}</h4>
+      <p class="user-description">
+        {{user.about}}
+      </p>
+      <p class="user-contact">
+        <a ng-controller="EmailComposerCtrl" ng-click="sendMail()">
+          <i class="icon ion-email"></i> {{user.email}}
+        </a>
+      </p>
+      <p class="user-site" dynamic-anchor-fix>
+        <a ng-href="{{user.website}}">{{user.website | cleanUrl}}</a>
+      </p>
+    </div>
+  </div>
+  <div class="row profile-details-section split-actions">
+    <div class="col user-interaction">
+      <a class="user-interaction-tab button button-clear button-block" ng-class="{active: ('app.profile.posts' | includedByState)}" nav-transition="none" ng-click="getUserPosts()" role="tab">
+        <i class="icon ion-document-text"></i> All Posts
+      </a>
+    </div>
+    <div class="col user-interaction">
+      <a class="user-interaction-tab button button-clear button-block" ng-class="{active: ('app.profile.pics' | includedByState)}" nav-transition="none" ng-click="getUserPics()" role="tab">
+        <i class="icon ion-images"></i> Pics
+      </a>
+    </div>
+  </div>
+  <ion-nav-view class="profile-sub-views-outer" name="profileSubContent"></ion-nav-view>
+</ion-view>

@@ -1,0 +1,19 @@
+{
+  "name": "ionSocialApp",
+  "private": "true",
+  "devDependencies": {
+    "ionic": "driftyco/ionic-bower#1.3.1"
+  },
+  "dependencies": {
+    "bourbon": "~4.2.3",
+    "underscore": "~1.8.3",
+    "angular-moment": "~0.10.3",
+    "knuth-shuffle": "https://github.com/coolaj86/knuth-shuffle.git",
+    "ngCordova": "~0.1.24-alpha",
+    "angular-elastic": "~2.5.1",
+    "theme-3-icons": "https://bitbucket.org/picosypalas/theme-3-icons.git"
+  },
+  "resolutions": {
+    "angular": ">=1.2.0 <1.5.0"
+  }
+}

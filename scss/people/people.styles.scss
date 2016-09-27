@@ -1,0 +1,200 @@
+.people-view
+{
+  background: $people-bg;
+
+  .item-divider
+  {
+    @include item-style($people-divider-bg, darken($people-divider-bg, 5%), $people-divider-color);
+  }
+
+  .col-user-image
+  {
+    max-width: 50px;
+  }
+
+  .user-image-outer
+  {
+    .user-image
+    {
+      width: 100%;
+    }
+
+    .square-image .user-image
+    {
+      border-radius: 2px;
+    }
+  }
+
+  .user-related-content
+  {
+    .user-preview-image
+    {
+      width: 100%;
+    }
+  }
+
+  .suggested-people.card
+  {
+    box-shadow: none;
+    margin: 0px;
+    padding: 0px;
+
+    .user-data
+    {
+      padding: 0px;
+
+      .col
+      {
+        padding: 0px;
+      }
+
+      .username
+      {
+        display: block;
+        font-size: 14px;
+        line-height: 14px;
+        font-weight: 500;
+        text-decoration: none;
+        text-transform: lowercase;
+        color: $people-color;
+      }
+
+      .name
+      {
+        display: block;
+        font-size: 14px;
+        line-height: 14px;
+        font-weight: 300;
+        margin-top: 3px;
+        color: rgba($people-color, .6);
+      }
+
+      .action-col
+      {
+        padding-left: 5px;
+
+        .button
+        {
+          margin: 0px;
+          text-transform: uppercase;
+          font-size: 10px;
+          font-weight: 600;
+          float: right;
+          margin-left: 5px;
+          padding-right: 10px;
+          padding-left: 10px;
+
+          &:last-child
+          {
+            margin-left: 0px;
+          }
+
+          &.follow-button
+          {
+            @include button-outline($people-follow-button-bg);
+          }
+
+          &.hide-button
+          {
+            @include button-outline($people-hide-button-bg);
+          }
+        }
+      }
+    }
+
+    .user-related-content
+    {
+      padding-left: 0px;
+      padding-right: 0px;
+
+      .col
+      {
+        padding: 1px;
+
+        &:first-child
+        {
+          padding-left: 0px;
+        }
+
+        &:last-child
+        {
+          padding-right: 0px;
+        }
+      }
+    }
+
+    .user-relation
+    {
+      .col
+      {
+        padding-bottom: 0px;
+      }
+
+      .relation
+      {
+        text-transform: uppercase;
+        font-size: 11px;
+        font-weight: 300;
+        letter-spacing: 0.05em;
+        color: rgba($people-color, .6);
+      }
+    }
+  }
+
+  .suggested-people.row
+  {
+    .user-data
+    {
+      padding: 0px;
+
+      .col
+      {
+        padding: 0px;
+      }
+
+      .name
+      {
+        display: block;
+        font-size: 14px;
+        line-height: 18px;
+        font-weight: 500;
+        text-decoration: none;
+        color: $people-color;
+      }
+
+      .brief-info
+      {
+        display: block;
+        font-size: 13px;
+        line-height: 16px;
+        font-weight: 300;
+        margin-top: 2px;
+        color: rgba($people-color, .6);
+      }
+
+      .action-col
+      {
+        padding-left: 5px;
+
+        .follow-button
+        {
+          margin: 0px;
+          text-transform: uppercase;
+          font-size: 10px;
+          font-weight: 600;
+          float: right;
+          margin-left: 5px;
+          padding-right: 10px;
+          padding-left: 10px;
+
+          @include button-outline($people-follow-button-bg);
+
+          &:last-child
+          {
+            margin-left: 0px;
+          }
+        }
+      }
+    }
+  }
+}

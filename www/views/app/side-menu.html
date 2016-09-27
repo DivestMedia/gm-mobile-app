@@ -1,0 +1,50 @@
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content>
+
+    <ion-nav-bar class="app-bar">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left">
+    <ion-content has-bouncing="false" scroll="false" class="menu-outer left-menu">
+      <ion-list class="menu-items-list">
+        <div class="row">
+          <div class="col col-center">
+            <ion-item ui-sref-active="active" class="item-icon-left item-icon-right" menu-close ui-sref="app.feed">
+              <i class="menu-icon icon ion-earth"></i>
+              <h2 class="menu-text">Feed</h2>
+              <i class="item-pointer-icon icon ion-chevron-right"></i>
+            </ion-item>
+            <ion-item ui-sref-active="active" class="item-icon-left item-icon-right" menu-close ui-sref="app.people">
+              <i class="menu-icon icon ion-person-stalker"></i>
+              <h2 class="menu-text">People</h2>
+              <i class="item-pointer-icon icon ion-chevron-right"></i>
+            </ion-item>
+            <ion-item ui-sref-active="active" class="item-icon-left item-icon-right" menu-close ui-sref="app.browse">
+              <i class="menu-icon icon ion-ios-albums-outline"></i>
+              <h2 class="menu-text">Browse</h2>
+              <i class="item-pointer-icon icon ion-chevron-right"></i>
+            </ion-item>
+          </div>
+        </div>
+        <div class="row menu-bottom-options">
+          <div class="col col-top">
+            <!-- Just for example purposes user with id=0 will represent our logged user -->
+            <ion-item ui-sref-active="active" ng-class="{'active': ('app.profile' | includedByState)}" class="item-icon-left item-icon-right" menu-close ui-sref="app.profile.posts({userId: 0})">
+              <i class="menu-icon icon ion-happy-outline"></i>
+              <h2 class="menu-text">My Profile</h2>
+              <i class="item-pointer-icon icon ion-chevron-right"></i>
+            </ion-item>
+          </div>
+        </div>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>
