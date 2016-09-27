@@ -392,11 +392,11 @@ angular.module('your_app_name.app.controllers', [])
 
 })
 
-.controller('BandCtrl', function($scope , Bands) {
-  
-    $scope.bandlist = Bands.list();
+.controller('BandCtrl', function($scope , Bands ) {
    
-   console.log($scope.bandlist);
+   $scope.bandlist = Bands.list();
+   console.log(Bands.list());
+  
 
 })
 .controller('VenueCtrl', function($scope) {

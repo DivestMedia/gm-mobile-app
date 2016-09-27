@@ -366,11 +366,11 @@ angular.module('your_app_name.app.services', [])
 
 
 
-.service('Bands', function ($http, $q ){
+.factory('Bands', function ($http){
 //var dfd = $rootScope.defer();
  return {
     list: function () {
-	  var dfd = $q.defer();
+	 // var dfd = $q.defer();
       $http.get('http://www.gigsmanila.com/api/bands/1/20/').success(function(bands) {
 	  //
       //dfd.resolve(bands);
@@ -379,11 +379,12 @@ angular.module('your_app_name.app.services', [])
 		   return band;
       });
        // return band;
-      dfd.resolve(bandlist);
-	  
+      //dfd.resolve(bandlist);
 	  
 	  console.log(bandlist);
-	  return dfd.promise;
+	   return bandlist; 
+	  //console.log(bandlist);
+	  //return dfd.promise;
 	  })
     },
     get: function () {
