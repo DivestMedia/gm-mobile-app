@@ -400,6 +400,7 @@ angular.module('your_app_name.app.controllers', [])
     // $http.get('http://www.gigsmanila.com/api/bands/all/')
 
 
+
     .success(function(data, status, headers,config){
         console.log('data success');
         console.log(data); // for browser console
