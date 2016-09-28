@@ -397,6 +397,7 @@ angular.module('your_app_name.app.controllers', [])
    
     $scope.bandlist = "";
     $http.get('http://www.gigsmanila.com/api/bands/1/20/')
+   // $http.get('http://www.gigsmanila.com/api/bands/all/')
     .success(function(data, status, headers,config){
       console.log('data success');
       console.log(data); // for browser console
@@ -431,6 +432,30 @@ angular.module('your_app_name.app.controllers', [])
   return $scope.bandlist; */
 
 })
+
+.controller('BandProfileCtrl', function($scope , $http,  $stateParams) {
+   
+   var bandID = $stateParams.bandID;
+    
+    $scope.bandID = bandID;
+    $http.get('http://www.gigsmanila.com/api/band/profile/'+bandID+'/')
+    .success(function(data, status, headers,config){
+      console.log('data success');
+      console.log(data); // for browser console
+      //$scope.bandlist = data; // for UI
+	  $scope.band = data;
+    })
+    .error(function(data, status, headers,config){
+      console.log('data error');
+    })
+    .then(function(result){
+      things = result.data;
+    });
+  
+   console.log('data error');
+
+})
+
 .controller('VenueCtrl', function($scope) {
 
 })

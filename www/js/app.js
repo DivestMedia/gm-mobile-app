@@ -339,7 +339,15 @@ angular.module('your_app_name', [
     }   */
   })
   
-  
+  .state('app.bandprofile', {
+    url: "/band-profile/:bandID",
+    views: {
+      'menuContent': {
+        templateUrl: "views/app/band-profile.html",
+        controller: "BandProfileCtrl"
+      }
+    }
+  })
   
 ;
 

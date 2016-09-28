@@ -372,6 +372,7 @@ var dfd = $q.defer();
     list: function () {
 	  var dfd = $q.defer();
       $http.get('http://www.gigsmanila.com/api/bands/1/20/').success(function(bands) {
+      //$http.get('http://www.gigsmanila.com/api/bands/all').success(function(bands) {
 	  
 	   var bandlist = _.each(bands, function(band){
 		   //console.log(band);
