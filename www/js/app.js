@@ -323,31 +323,41 @@ angular.module('your_app_name', [
         }
     })
 
-  .state('app.band', {
-    url: "/band",
-    views: {
-      'menuContent': {
-        templateUrl: "views/app/band.html",
-        controller: "BandCtrl"
-      }
-    }/*  ,
-     resolve: {
-      Bandlist: function(Bands){
-		return Bands.list();
-      }
-    }   */
-  })
+
+    .state('app.bandmain', {
+        url: "/band",
+        views: {
+            'menuContent': {
+                templateUrl: "views/app/bandmain.html",
+            }
+        }
+    })
+
+    .state('app.band', {
+        url: "/band/:startID",
+        views: {
+            'menuContent': {
+                templateUrl: "views/app/band.html",
+                controller: "BandCtrl"
+            }
+        }/*  ,
+        resolve: {
+        Bandlist: function(Bands){
+        return Bands.list();
+    }
+}   */
+})
 
 
-  .state('app.bandprofile', {
+.state('app.bandprofile', {
     url: "/band-profile/:bandID",
     views: {
-      'menuContent': {
-        templateUrl: "views/app/band-profile.html",
-        controller: "BandProfileCtrl"
-      }
+        'menuContent': {
+            templateUrl: "views/app/band-profile.html",
+            controller: "BandProfileCtrl"
+        }
     }
-  })
+})
 
 ;
 
