@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <meta http-equiv="Content-Security-Policy" content="default-src *; script-src &apos;self&apos; &apos;unsafe-inline&apos; &apos;unsafe-eval&apos; *; style-src  &apos;self&apos; &apos;unsafe-inline&apos; *">
     <title></title>
 
     <link href="css/ionic.app.css" rel="stylesheet">
-    <script src="https://maps.google.com/maps/api/js?libraries=places"></script>
+    <script src="https://maps.google.com/maps/api/js?key=AIzaSyAxb9qngGuXSfP7QF78pM5QcWz6IprycNI"></script>
     <script src="lib/ionic/js/ionic.bundle.js"></script>
     <script src="lib/underscore/underscore-min.js"></script>
     <script src="lib/moment/min/moment.min.js"></script>
@@ -24,8 +24,11 @@
     <script src="js/app/app.services.js"></script>
     <script src="js/app/app.filters.js"></script>
     <script src="js/views.js"></script>
-  </head>
-  <body ng-app="your_app_name">
+
+    <!-- <script src='lib/angular-google-maps/angular-google-maps.min.js'></script> -->
+    <script src="lib/ng-map/ng-map.min.js"></script>
+</head>
+<body ng-app="your_app_name">
     <ion-nav-view></ion-nav-view>
-  </body>
+</body>
 </html>

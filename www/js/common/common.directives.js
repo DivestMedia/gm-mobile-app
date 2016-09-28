@@ -270,5 +270,4 @@ angular.module('your_app_name.common.directives', [])
 		replace: false,
 		transclude: false
 	};
-})
-;
+});

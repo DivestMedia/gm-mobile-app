@@ -1,5 +1,36 @@
+<style>
+map {
+    width: 100%;
+    height: 100% !important;
+}
+.scroll, .mapWrap {
+    height: 100%;
+}
+</style>
 <ion-view class="gigs-view"  view-title="Gigs Venue">
-  <ion-content>
-  Venue list here
-  </ion-content>
+    <ion-content>
+        <div class="mapWrap"  data-tap-disabled="true">
+            <map center="14,121" zoom="10" >
+                <!-- ngRepeat: pos in positions -->
+                <marker ng-repeat="pos in positions" position="{{pos.lat}},{{pos.lng}}" id="marker-{{ pos.id }}" ng-click="map.showInfoWindow(event, 'info') ; info = pos.info"></marker>
+                <info-window ng-show="{{ showInfo }}" id="info" ng-init="infodata = info">
+                    <div ng-non-bindable>
+                        <div id="siteNotice"></div>
+                        <div id="bodyContent">
+                            <!-- <p>
+                            {{ infodata.name }}<br>
+                            {{ infodata.date }} at {{ infodata.time }}<br>
+                            {{ infodata.admission }}<br>
+                            {{ infodata.venue.name }}<br>
+                            Bands: <br>
+                            <ul>
+                            <li ng-repeat="band in infodata.bands">{{ band }}</li>
+                        </ul>
+                    </p> -->
+                </div>
+            </div>
+        </info-window>
+    </map>
+</div>
+</ion-content>
 </ion-view>
