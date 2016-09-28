@@ -1,51 +1,23 @@
-<div class="card-1">
-  <div class="list card">
-    <div class="item item-image">
-      <a class="card-image-anchor" ui-sref="app.post({ postId: card.id })">
-        <pre-img ratio="_8_5" helper-class="main-image">
-          <img ng-src="{{ card.picture }}" spinner-on-load>
-        </pre-img>
-      </a>
-    </div>
-    <div class="item item-body">
-      <a ui-sref="app.post({ postId: card.id })">
-        <h2 class="card-title">{{ card.title }}</h2>
-      </a>
-    </div>
-    <div class="item item-avatar">
-      <div class="card-avatar-image-outer">
-        <a ui-sref="app.profile.posts({userId: card.userId})">
-          <pre-img ratio="_1_1" helper-class="avatar-image">
-            <img ng-src="{{ card.user.picture }}" spinner-on-load>
+<div class="card-7">
+  <div class="card">
+    <div class="row card-content-wrapper">
+      <div class="col col-33 image-wrapper">
+        <a class="card-image-anchor" ui-sref="app.post({ postId: post.id })">
+          <pre-img ratio="_1_1" helper-class="profile-post-image">
+            <img class="post-image" ng-src="{{band.thumb}}" spinner-on-load>
           </pre-img>
         </a>
       </div>
-      <a ui-sref="app.profile.posts({userId: card.userId})">
-        <h2 class="avatar-title">{{ card.user.name.first }} {{ card.user.name.last }}</h2>
-      </a>
-      <p class="avatar-description"><span am-time-ago="card.date"></span></p>
-        <a ui-sref="app.category_feed({ categoryId: card.category.id })">
-          <span class="card-tag post-category {{ card.category.name }}">{{ card.category.name }}</span>
+      <div class="col card-data">
+        <a class="card-title-outer" ui-sref="app.post({ postId: post.id })">
+          <h2 class="card-title">{{band.name}}</h2>
         </a>
-    </div>
-    <div class="actions-brief">
-      <a class="subdued">{{card.likes}} Likes</a>
-      <a ng-controller="CommentsCtrl" ng-click="showComments(card)" class="subdued">{{card.comments}} Comments</a>
-      <a class="subdued">{{card.shares}} Shares</a>
-    </div>
-    <div class="item tabs tabs-icon-left">
-      <a class="tab-item" ng-class="{liked: card.liked}">
-        <i class="icon theme-icon icon-like"></i>
-        Like
-      </a>
-      <a class="tab-item" ng-controller="CommentsCtrl" ng-click="showComments(card)">
-        <i class="icon theme-icon icon-bubble"></i>
-        Comment
-      </a>
-      <a class="tab-item" social-share share="card">
-        <i class="icon theme-icon icon-share"></i>
-        Share
-      </a>
+        <div class="actions-brief">cc
+          <a class="subdued">{{post.likes}} Likes</a>
+          <a ng-controller="CommentsCtrl" ng-click="showComments(post)" class="subdued">{{post.comments}} Comments</a>
+          <a class="subdued">{{post.shares}} Shares</a>
+        </div>
+      </div>
     </div>
   </div>
 </div>

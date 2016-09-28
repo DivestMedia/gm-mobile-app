@@ -1,29 +1,21 @@
-<ion-view class="people-viewx"  view-title="All">
- 
- <ion-content>
- 
-
-  <div class="list">
-  
-  
-  
-	<a class="item item-avatar item-icon-right" ng-href="#/app/band-profile/{{ band.ID}}" ng-repeat="band in bandlist">
-		<img ng-src="{{band.thumb}}">
-		<h2>{{band.name}}</h2>
-		<i class="icon ion-ios-arrow-forward"></i>
-		<p>{{band.genre}}</p>
-    </a>
-  </div>
-
-
-<!-- 
-
-            <a ui-sref="app.band.profile({bandID: band.ID})">
-              <pre-img ratio="_1_1" helper-class="square-image">
-                <img class="user-image" ng-src="{{band.thumb}}" spinner-on-load>
-              </pre-img>
-            </a>
-     -->
-  
+<ion-view class="browse-view" view-title="Filter: {{startID}}">
+  <ion-content>
+    <div class="list">
+      
+      <div class="row categories-outer">
+        <div ng-repeat="band in bandlist" class="col col-50 category-item-outer">
+          <a ng-href="#/app/band-profile/{{ band.ID}}">
+          <!-- <a ui-sref="app.band-profile({ band.ID})"> -->
+            <div class="category-item-wrapper">
+              <div class="category-item-content" ng-init="bg_img = band.thumb">
+                <div multi-bg="[bg_img]" interval="3000" helper-class="category-with-image">
+                  <h1 class="category-title">{{band.name}}</h1>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
   </ion-content>
 </ion-view>

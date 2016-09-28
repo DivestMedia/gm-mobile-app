@@ -392,11 +392,11 @@ angular.module('your_app_name.app.controllers', [])
 
 })
 
-.controller('BandCtrl', function($scope , $http, Bands) {
+.controller('BandCtrl', function($scope , $http, $stateParams) {
    
-   
+   var startID = $stateParams.startID;
     $scope.bandlist = "";
-    $http.get('http://www.gigsmanila.com/api/bands/1/20/')
+    $http.get('http://www.gigsmanila.com/api/bands/'+startID+'/')
    // $http.get('http://www.gigsmanila.com/api/bands/all/')
     .success(function(data, status, headers,config){
       console.log('data success');

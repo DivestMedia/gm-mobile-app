@@ -324,8 +324,17 @@ angular.module('your_app_name', [
   })
   
     
-  .state('app.band', {
+  .state('app.bandmain', {
     url: "/band",
+    views: {
+      'menuContent': {
+        templateUrl: "views/app/bandmain.html",
+      }
+    }
+  })
+      
+  .state('app.band', {
+    url: "/band/:startID",
     views: {
       'menuContent': {
         templateUrl: "views/app/band.html",
