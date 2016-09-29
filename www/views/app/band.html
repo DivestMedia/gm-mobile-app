@@ -1,11 +1,20 @@
-<ion-view class="browse-view" view-title="Filter: {{startID}}">
+<ion-view class="browse-view" view-title="Filter: {{startID | uppercase}}">
   <ion-content>
     <div class="list">
       
-      <div class="row categories-outer">
-        <div ng-repeat="band in bandlist" class="col col-50 category-item-outer">
+    
+		<a class="item item-avatar" ng-href="#/app/band-profile/{{ band.ID}}" ng-repeat="band in bandlist" >
+		  <img src="{{ band.thumb }}">
+		  <h2>{{band.name}}</h2>
+		  <p>{{band.genre}}</p>
+		</a>
+	
+        <!-- 
+		  <div class="row categories-outer">
+	  
+	  
+		<div ng-repeat="band in bandlist" class="col col-50 category-item-outer">
           <a ng-href="#/app/band-profile/{{ band.ID}}">
-          <!-- <a ui-sref="app.band-profile({ band.ID})"> -->
             <div class="category-item-wrapper">
               <div class="category-item-content" ng-init="bg_img = band.thumb">
                 <div multi-bg="[bg_img]" interval="3000" helper-class="category-with-image">
@@ -14,8 +23,8 @@
               </div>
             </div>
           </a>
-        </div>
-      </div>
+        </div>   </div>-->
+    
     </div>
   </ion-content>
 </ion-view>

@@ -392,14 +392,13 @@ angular.module('your_app_name.app.controllers', [])
 
 })
 
-.controller('BandCtrl', function($scope , $http, Bands) {
+.controller('BandCtrl', function($scope , $http, $stateParams) {
 
-
+	var startID = $stateParams.startID;
     $scope.bandlist = "";
-    $http.get('http://www.gigsmanila.com/api/bands/1/20/')
+    $scope.startID = startID;
+    $http.get('http://www.gigsmanila.com/api/bands/'+startID+'/')
     // $http.get('http://www.gigsmanila.com/api/bands/all/')
-
-
 
     .success(function(data, status, headers,config){
         console.log('data success');
@@ -437,6 +436,16 @@ return $scope.bandlist; */
 
 })
 
+.controller('BandMainCtrl', function($scope , $http,  $stateParams) {
+
+	var arr = [];
+	for (i = 65; i <= 90; i++) {
+		 arr[i-65] = String.fromCharCode(i).toLowerCase();
+	}
+    $scope.bandstart = arr;
+ 
+
+})
 .controller('BandProfileCtrl', function($scope , $http,  $stateParams) {
 
     var bandID = $stateParams.bandID;

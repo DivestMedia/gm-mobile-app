@@ -329,6 +329,7 @@ angular.module('your_app_name', [
         views: {
             'menuContent': {
                 templateUrl: "views/app/bandmain.html",
+				controller: "BandMainCtrl"
             }
         }
     })
