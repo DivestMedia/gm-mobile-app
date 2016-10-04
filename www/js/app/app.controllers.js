@@ -705,9 +705,9 @@ angular.module( 'your_app_name.app.controllers', [] )
                         var today = new Date();
 
                         if ( myDate > today ) {
-                            icon = '/img/pin/pin-map-black.png';
+                            icon = 'img/pin/pin-map-shadow-black.png';
                         } else {
-                            icon = '/img/pin/pin-map-red.png';
+                            icon = 'img/pin/pin-map-shadow-red.png';
                         }
 
                         var gigMarker = new google.maps.Marker( {
@@ -722,7 +722,7 @@ angular.module( 'your_app_name.app.controllers', [] )
                             gigMarker, 'click',
                             function ( index ) {
                                 window.location.assign(
-                                    '/gigs/info/' +
+                                    '#/app/gigs/' +
                                     this
                                     .id );
                             } );

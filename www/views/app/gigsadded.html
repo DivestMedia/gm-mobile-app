@@ -3,47 +3,57 @@
 
 <div class="tabs-striped tabs-top tabs-background-positive tabs-color-light">
     <div class="tabs">
-      <a class="tab-item"  menu-close href="#/app/gigs">
+      <a class="tab-item "  menu-close href="#/app/gigs" name="gigs-upcoming">
         
         Upcoming
       </a>
-      <a class="tab-item active"  menu-close href="#">
+      <a class="tab-item active" menu-close href="#" name="gigs-latest">
         Latest Added
       </a>
-      <a class="tab-item"  menu-close href="#/app/gigspast">
+      <a class="tab-item" menu-close href="#/app/gigspast" name="gigs-past">
         Past Events
       </a>
     </div>
   </div>
   
   
+<ion-content overflow-scroll="true" class="has-tabs-top">
   
-  <ion-content overflow-scroll="true">
+<!--   <div class="item item-divider ng-if="{{gigsupcoming !== null}}"">
+    Upcoming Gigs
+  </div> -->
+<div class="card-1">
+	<div class="list card" ng-repeat="gigs_up in gigs">
+		<div class="item item-image">
+		  <a class="card-image-anchor" href="#/app/gigs/{{ gigs_up.id}}">
+			<pre-img ratio="_8_5" helper-class="main-image">
+			  <img ng-src="{{ gigs_up.thumb }}" spinner-on-load>
+			</pre-img>
+		  </a>
+		</div>
+		
+		<a class="item title" href="#/app/gigs/{{ gigs_up.id}}">
+			<b>{{ gigs_up.title }}</b>
+		</a>
+		
+		<a class="item item-icon-left assertive" href="#/app/gigs/{{ gigs_up.id}}">
+			<i class="icon ion-ios-calendar"></i>
+			{{gigs_up.date_before}}
+		</a>
+		<a class="item item-icon-left dark" href="#/app/gigs/{{ gigs_up.id}}">
+			<i class="icon ion-ios-location"></i>
+			{{gigs_up.venue}},{{gigs_up.city}}
+		</a>
+		<a class="item item-icon-left dark" href="#/app/gigs/{{ gigs_up.id}}">
+			<i class="icon ion-ios-mic"></i>
+			{{gigs_up.bands}}
+		</a>
+		
+	</div>
   
-  <div class="item item-divider ng-if="{{gigs !== null}}"">
-    Latest Added Gigs
-  </div>
-  
-<div class="list" ng-repeat="gigs_up in gigs" >
-
-  <div class="item item-image"><a href="#/app/gigs/{{ gigs_up.id}}">
-    <pre-img ratio="_1_1" helper-class="main-image">
-        <img ng-src="{{gigs_up.thumb}}" spinner-on-load>
-    </pre-img></a>
-  </div>
-  <div class="item item-body">
-	<h2><a href="#/app/gigs/{{ gigs_up.id}}">{{gigs_up.title}}</a></h2>
-  
-    <p><i class="icon ion-ios-calendar"></i> {{gigs_up.date_before}}</p>
-    <p><i class="icon ion-ios-location"></i> {{gigs_up.venue}},{{gigs_up.city}}</p>
-    <p><i class="icon ion-ios-mic"></i> {{gigs_up.bands}}</p>
-     
-  </div>
-  
-
 </div>
 
-  </ion-content>
+</ion-content>
   
   
 </ion-view>

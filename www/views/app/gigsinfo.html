@@ -1,28 +1,42 @@
-<ion-view class="feed-view pane filtered-feed" >
-  <ion-content>
+<ion-view class="gigs-view"  view-title="Gigs Sked">
+
   
+  <ion-content overflow-scroll="true" class="has-tabs-top">
   
-  
-  
-  <div class="row filtered-feed-header-outer">
-  Gigs Info
-  
-  
-	<div class="col filtered-feed-header">
-		<div class="col filtered-feed-header" ng-init="bg_img = band.thumb">
-		
-			<div multi-bg="[band.thumb]" interval="3000" helper-class="category-with-image">
-			  <div class="filtered-feed-header-content">
-				<h2 class="header-title">{{band.name}}</h2>
-			  </div>
-			</div>
+<!--   <div class="item item-divider ng-if="{{gigsupcoming !== null}}"">
+    Upcoming Gigs
+  </div> -->
+<div class="card-1">
+	<div class="list card" ng-repeat="gigs_up in gigs">
+		<div class="item item-image">
+		  <a class="card-image-anchor" href="#/app/gigs/{{ gigs_up.id}}">
+			<pre-img ratio="_8_5" helper-class="main-image">
+			  <img ng-src="{{ gigs_up.thumb }}" spinner-on-load>
+			</pre-img>
+		  </a>
 		</div>
-  
-  {{band.thumb}}
+		
+		<a class="item title" href="#/app/gigs/{{ gigs_up.id}}">
+			<b>{{ gigs_up.title }}</b>
+		</a>
+		
+		<a class="item item-icon-left assertive" href="#/app/gigs/{{ gigs_up.id}}">
+			<i class="icon ion-ios-calendar"></i>
+			{{gigs_up.date_before}}
+		</a>
+		<a class="item item-icon-left dark" href="#/app/gigs/{{ gigs_up.id}}">
+			<i class="icon ion-ios-location"></i>
+			{{gigs_up.venue}},{{gigs_up.city}}
+		</a>
+		<a class="item item-icon-left dark" href="#/app/gigs/{{ gigs_up.id}}">
+			<i class="icon ion-ios-mic"></i>
+			{{gigs_up.bands}}
+		</a>
+		
 	</div>
-  </div>
   
-  
-  
-  <ion-content>
+</div>
+
+</ion-content>
+
 </ion-view>
