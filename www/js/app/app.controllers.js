@@ -646,7 +646,7 @@ angular.module( 'your_app_name.app.controllers', [] )
                             gigMarker, 'click',
                             function ( index ) {
                                 window.location.assign(
-                                    '#app/gigs/info/' +
+                                    '/gigs/info/' +
                                     this
                                     .id );
                             } );
