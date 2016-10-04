@@ -532,6 +532,11 @@ angular.module( 'your_app_name.app.controllers', [] )
 
     $scope.$on( 'mapInitialized', function ( event, map ) {
         $scope.map = map;
+        google.maps.event.addListener( map, 'center_changed',
+            function () {
+                $scope.addMarkersOnMap( map.getCenter().lat(),
+                    map.getCenter().lng() );
+            } );
         $scope.centerOnMe();
     } );
 
@@ -581,6 +586,8 @@ angular.module( 'your_app_name.app.controllers', [] )
 
     };
 
+
+
     $scope.addMarkersOnMap = function ( lat, lng ) {
         $ionicLoading.show( {
             template: 'Getting data...'
@@ -590,6 +597,9 @@ angular.module( 'your_app_name.app.controllers', [] )
             .success( function ( data, status, headers, config ) {
                 //$scope.bandlist = data; // for UI
                 // $scope.band = data;
+
+                $scope.positions = [];
+
                 if ( data.status == "OK" ) {
                     for ( var i in data.results ) {
                         var id = $scope.positions.push( {
@@ -636,7 +646,8 @@ angular.module( 'your_app_name.app.controllers', [] )
                             gigMarker, 'click',
                             function ( index ) {
                                 window.location.assign(
-                                    'gigs/info/' + this
+                                    '#app/gigs/info/' +
+                                    this
                                     .id );
                             } );
 
