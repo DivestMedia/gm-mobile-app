@@ -1,16 +1,16 @@
-<ion-view class="gigs-view"  view-title="Gigs Sked">
+<ion-view class="gigs-view-latest"  view-title="Gigs Sked">
 
 
 <div class="tabs-striped tabs-top tabs-background-positive tabs-color-light">
     <div class="tabs">
-      <a class="tab-item active"  menu-close href="#" name="gigs-upcoming">
+      <a class="tab-item"  menu-close href="#/app/gigs">
         
         Upcoming
       </a>
-      <a class="tab-item" menu-close href="#/app/gigsadded" name="gigs-latest">
+      <a class="tab-item active" menu-close href="#">
         Latest Added
       </a>
-      <a class="tab-item" menu-close href="#/app/gigspast" name="gigs-past">
+      <a class="tab-item"  menu-close href="#">
         Past Events
       </a>
     </div>
@@ -20,11 +20,11 @@
   
   <ion-content overflow-scroll="true">
   
-  <div class="item item-divider ng-if="{{gigsupcoming !== null}}"">
-    Upcoming Gigs
+  <div class="item item-divider ng-if="{{gigs !== null}}"">
+    Latest Added Gigs
   </div>
   
-<div class="list" ng-repeat="gigs_up in gigsupcoming" >
+<div class="list" ng-repeat="gigs_up in gigs" >
 
   <div class="item item-image"><a href="#/app/gigs/{{ gigs_up.id}}">
     <pre-img ratio="_1_1" helper-class="main-image">

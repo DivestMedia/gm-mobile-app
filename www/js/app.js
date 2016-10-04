@@ -305,6 +305,7 @@ angular.module('your_app_name', [
 
     .state('app.gigs', {
         url: "/gigs",
+		
         views: {
             'menuContent': {
                 templateUrl: "views/app/gigs.html",
@@ -312,6 +313,37 @@ angular.module('your_app_name', [
             }
         }
     })
+	.state('app.gigsadded', {
+        url: "/gigsadded",
+		 
+        views: {
+            'menuContent': {
+                templateUrl: "views/app/gigsadded.html",
+                controller: "GigsAddedCtrl"
+            }
+        }
+    })
+	.state('app.gigspast', {
+        url: "/gigspast",
+		 
+        views: {
+            'menuContent': {
+                templateUrl: "views/app/gigspast.html",
+                controller: "GigsPastCtrl"
+            }
+        }
+    })
+	
+	.state('app.gigsinfo', {
+        url: "/gigs/:startID",
+        views: {
+            'menuContent': {
+                templateUrl: "views/app/gigsinfo.html",
+                controller: "GigsInfoCtrl"
+            }
+        }
+    })
+	
 
     .state('app.venue', {
         url: "/venue",

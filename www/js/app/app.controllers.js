@@ -425,8 +425,84 @@ angular.module( 'your_app_name.app.controllers', [] )
 
 .controller( 'MapCtrl', function ( $scope ) {
 
-    } )
-    .controller( 'GigsCtrl', function ( $scope ) {
+} )
+.controller( 'GigsCtrl',function ( $scope, $http, $stateParams ) {
+
+	var startID = $stateParams.startID;
+    $scope.bandlist = "";
+    $scope.startID = startID;
+    $http.get( 'http://www.gigsmanila.com/api/gigs-sked/upcoming/' )
+    .success( function ( data, status, headers, config ) {
+            console.log( 'data success' );
+            console.log( data ); // for browser console
+            $scope.gigsupcoming = data; // for UI
+        } )
+        .error( function ( data, status, headers, config ) {
+            console.log( 'data error' );
+        } )
+        .then( function ( result ) {
+            things = result.data;
+        } );
+		
+} )
+.controller( 'GigsAddedCtrl',function ( $scope, $http, $stateParams ) {
+
+	var startID = $stateParams.startID;
+    $scope.bandlist = "";
+    $http.get( 'http://www.gigsmanila.com/api/gigs-sked/1/20/' )
+    .success( function ( data, status, headers, config ) {
+            console.log( 'data success' );
+            console.log( data ); // for browser console
+            $scope.gigs = data; // for UI
+        } )
+        .error( function ( data, status, headers, config ) {
+            console.log( 'data error' );
+        } )
+        .then( function ( result ) {
+            things = result.data;
+        } );
+		
+} )
+.controller( 'GigsPastCtrl',function ( $scope, $http, $stateParams ) {
+
+	var startID = $stateParams.startID;
+    $scope.bandlist = "";
+    $http.get( 'http://www.gigsmanila.com/api/gigs-sked/past-event/1/20/' )
+    .success( function ( data, status, headers, config ) {
+            console.log( 'data success' );
+            console.log( data ); // for browser console
+            $scope.gigs = data; // for UI
+        } )
+        .error( function ( data, status, headers, config ) {
+            console.log( 'data error' );
+        } )
+        .then( function ( result ) {
+            things = result.data;
+        } );
+		
+} )
+
+ .controller( 'GigsInfoCtrl', function ( $scope, $http, $stateParams ) {
+
+        var bandID = $stateParams.startID;
+
+        $scope.bandID = bandID;
+        $http.get( 'http://www.gigsmanila.com/api/band/profile/' + bandID +
+                '/' )
+            .success( function ( data, status, headers, config ) {
+                console.log( 'data success' );
+                console.log( data ); // for browser console
+                //$scope.bandlist = data; // for UI
+                $scope.band = data;
+            } )
+            .error( function ( data, status, headers, config ) {
+                console.log( 'data error' );
+            } )
+            .then( function ( result ) {
+                things = result.data;
+            } );
+
+        console.log( 'data error' );
 
     } )
 
