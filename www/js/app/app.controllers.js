@@ -608,6 +608,11 @@ angular.module( 'your_app_name.app.controllers', [] )
 
     $scope.$on( 'mapInitialized', function ( event, map ) {
         $scope.map = map;
+        google.maps.event.addListener( map, 'center_changed',
+            function () {
+                $scope.addMarkersOnMap( map.getCenter().lat(),
+                    map.getCenter().lng() );
+            } );
         $scope.centerOnMe();
     } );
 
@@ -657,6 +662,8 @@ angular.module( 'your_app_name.app.controllers', [] )
 
     };
 
+
+
     $scope.addMarkersOnMap = function ( lat, lng ) {
         $ionicLoading.show( {
             template: 'Getting data...'
@@ -666,6 +673,9 @@ angular.module( 'your_app_name.app.controllers', [] )
             .success( function ( data, status, headers, config ) {
                 //$scope.bandlist = data; // for UI
                 // $scope.band = data;
+
+                $scope.positions = [];
+
                 if ( data.status == "OK" ) {
                     for ( var i in data.results ) {
                         var id = $scope.positions.push( {
@@ -682,17 +692,39 @@ angular.module( 'your_app_name.app.controllers', [] )
                                 .lat ), parseFloat( data.results[
                                     i ].location
                                 .lng ) );
+
+                        var icon = '';
+                        var EnteredDate = data.results[ i ].date;
+                        var date = EnteredDate.substring( 8, 9 );
+                        var month = EnteredDate.substring( 5, 6 );
+                        var year = EnteredDate.substring( 0, 3 );
+
+                        var myDate = new Date( year, month - 1,
+                            date );
+
+                        var today = new Date();
+
+                        if ( myDate > today ) {
+                            icon = '/img/pin/pin-map-black.png';
+                        } else {
+                            icon = '/img/pin/pin-map-red.png';
+                        }
+
                         var gigMarker = new google.maps.Marker( {
                             position: myLatlng,
                             map: $scope.map,
-                            icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+                            icon: icon
                         } );
+
+                        gigMarker.id = data.results[ i ].id;
 
                         google.maps.event.addListener(
                             gigMarker, 'click',
                             function ( index ) {
-                                // window.location.assign('gigs/info/' + );
-                                console.log( index );
+                                window.location.assign(
+                                    '/gigs/info/' +
+                                    this
+                                    .id );
                             } );
 
                         // $scope.windows.push(data.results[i]);
