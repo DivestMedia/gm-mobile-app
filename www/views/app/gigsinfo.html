@@ -1,37 +1,40 @@
-<ion-view class="gigs-view"  view-title="Gigs Sked">
+<ion-view class="gigs-view"  view-title="Gigs Info">
 
   
-  <ion-content overflow-scroll="true" class="has-tabs-top">
+  <ion-content overflow-scroll="true" >
   
 <!--   <div class="item item-divider ng-if="{{gigsupcoming !== null}}"">
     Upcoming Gigs
   </div> -->
 <div class="card-1">
-	<div class="list card" ng-repeat="gigs_up in gigs">
+	<div class="list card">
 		<div class="item item-image">
-		  <a class="card-image-anchor" href="#/app/gigs/{{ gigs_up.id}}">
 			<pre-img ratio="_8_5" helper-class="main-image">
-			  <img ng-src="{{ gigs_up.thumb }}" spinner-on-load>
+			  <img ng-src="{{ gigs.thumb }}" spinner-on-load>
 			</pre-img>
-		  </a>
 		</div>
 		
-		<a class="item title" href="#/app/gigs/{{ gigs_up.id}}">
-			<b>{{ gigs_up.title }}</b>
-		</a>
+		<div class="item title" >
+			<b>{{ gigs.title }}</b>
+		</div>
 		
-		<a class="item item-icon-left assertive" href="#/app/gigs/{{ gigs_up.id}}">
+		<div class="item item-icon-left assertive" >
 			<i class="icon ion-ios-calendar"></i>
-			{{gigs_up.date_before}}
-		</a>
-		<a class="item item-icon-left dark" href="#/app/gigs/{{ gigs_up.id}}">
+			{{gigs.date}} - {{gigs.time}}
+		</div>
+		<div class="item item-icon-left dark">
 			<i class="icon ion-ios-location"></i>
-			{{gigs_up.venue}},{{gigs_up.city}}
-		</a>
-		<a class="item item-icon-left dark" href="#/app/gigs/{{ gigs_up.id}}">
+			{{gigs.venue}},{{gigs.city}}
+		</div>
+		<div class="item item-icon-left dark">
 			<i class="icon ion-ios-mic"></i>
-			{{gigs_up.bands}}
-		</a>
+			{{gigs.bands}}
+		</div>
+		
+		
+		<div class="item item-body item-text-wrap" ng-bind-html="gigs.description | unsafe">
+			{{gigs.description}}
+		</div>
 		
 	</div>
   
