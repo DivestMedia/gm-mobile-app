@@ -1,5 +1,45 @@
 <ion-view class="gigs-view"  view-title="Gigs Sked">
-  <ion-content>
-  Gigs list here
+  <ion-content overflow-scroll="true">
+  
+
+  
+<div class="list">
+
+  <div class="item item-divider ng-if="{{account.company !== null}}"">
+    Upcoming Gigs
+  </div>
+  
+  
+  <div class="item item-image">
+     <pre-img ratio="_1_1" helper-class="main-image">
+          <img ng-src="{{post.picture}}" spinner-on-load>
+        </pre-img>
+  </div>
+  <div class="item item-body">
+	<h2>Marty McFly</h2>
+  
+    <p><i class="icon ion-ios-calendar"></i> November 05, 1955</p>
+    <p><i class="icon ion-ios-location"></i> November 05, 1955</p>
+    <p><i class="icon ion-ios-mic"></i> November 05, 1955</p>
+     
+  </div>
+  
+
+  <a class="item" href="#">
+    Butterfinger
+  </a>
+
+  <div class="item item-divider">
+    Candy Bars
+  </div>
+
+  <a class="item" href="#">
+    Butterfinger
+  </a>
+
+
+</div>
+
+
   </ion-content>
 </ion-view>
