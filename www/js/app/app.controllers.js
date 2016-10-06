@@ -425,69 +425,70 @@ angular.module( 'your_app_name.app.controllers', [] )
 
 .controller( 'MapCtrl', function ( $scope ) {
 
-} )
-.controller( 'GigsCtrl',function ( $scope, $http, $stateParams ) {
+    } )
+    .controller( 'GigsCtrl', function ( $scope, $http, $stateParams ) {
 
-	var startID = $stateParams.startID;
-    $scope.bandlist = "";
-    $scope.startID = startID;
-    $http.get( 'http://www.gigsmanila.com/api/gigs-sked/upcoming/' )
-    .success( function ( data, status, headers, config ) {
-            console.log( 'data success' );
-            console.log( data ); // for browser console
-            $scope.gigsupcoming = data; // for UI
-        } )
-        .error( function ( data, status, headers, config ) {
-            console.log( 'data error' );
-        } )
-        .then( function ( result ) {
-            things = result.data;
-        } );
-		
-} )
-.controller( 'GigsAddedCtrl',function ( $scope, $http, $stateParams ) {
+        var startID = $stateParams.startID;
+        $scope.bandlist = "";
+        $scope.startID = startID;
+        $http.get( 'http://www.gigsmanila.com/api/gigs-sked/upcoming/' )
+            .success( function ( data, status, headers, config ) {
+                console.log( 'data success' );
+                console.log( data ); // for browser console
+                $scope.gigsupcoming = data; // for UI
+            } )
+            .error( function ( data, status, headers, config ) {
+                console.log( 'data error' );
+            } )
+            .then( function ( result ) {
+                things = result.data;
+            } );
 
-	var startID = $stateParams.startID;
-    $scope.bandlist = "";
-    $http.get( 'http://www.gigsmanila.com/api/gigs-sked/1/20/' )
-    .success( function ( data, status, headers, config ) {
-            console.log( 'data success' );
-            console.log( data ); // for browser console
-            $scope.gigs = data; // for UI
-        } )
-        .error( function ( data, status, headers, config ) {
-            console.log( 'data error' );
-        } )
-        .then( function ( result ) {
-            things = result.data;
-        } );
-		
-} )
-.controller( 'GigsPastCtrl',function ( $scope, $http, $stateParams ) {
+    } )
+    .controller( 'GigsAddedCtrl', function ( $scope, $http, $stateParams ) {
 
-	var startID = $stateParams.startID;
-    $scope.bandlist = "";
-    $http.get( 'http://www.gigsmanila.com/api/gigs-sked/past-event/1/20/' )
-    .success( function ( data, status, headers, config ) {
-            console.log( 'data success' );
-            console.log( data ); // for browser console
-            $scope.gigs = data; // for UI
-        } )
-        .error( function ( data, status, headers, config ) {
-            console.log( 'data error' );
-        } )
-        .then( function ( result ) {
-            things = result.data;
-        } );
-		
-} )
+        var startID = $stateParams.startID;
+        $scope.bandlist = "";
+        $http.get( 'http://www.gigsmanila.com/api/gigs-sked/1/20/' )
+            .success( function ( data, status, headers, config ) {
+                console.log( 'data success' );
+                console.log( data ); // for browser console
+                $scope.gigs = data; // for UI
+            } )
+            .error( function ( data, status, headers, config ) {
+                console.log( 'data error' );
+            } )
+            .then( function ( result ) {
+                things = result.data;
+            } );
 
- .controller( 'GigsInfoCtrl', function ( $scope, $http, $stateParams ) {
+    } )
+    .controller( 'GigsPastCtrl', function ( $scope, $http, $stateParams ) {
+
+        var startID = $stateParams.startID;
+        $scope.bandlist = "";
+        $http.get(
+                'http://www.gigsmanila.com/api/gigs-sked/past-event/1/20/' )
+            .success( function ( data, status, headers, config ) {
+                console.log( 'data success' );
+                console.log( data ); // for browser console
+                $scope.gigs = data; // for UI
+            } )
+            .error( function ( data, status, headers, config ) {
+                console.log( 'data error' );
+            } )
+            .then( function ( result ) {
+                things = result.data;
+            } );
+
+    } )
+    .controller( 'GigsInfoCtrl', function ( $scope, $http, $stateParams ) {
 
         var bandID = $stateParams.startID;
 
         $scope.bandID = bandID;
-        $http.get( 'http://www.gigsmanila.com/api/gig/profile/' + bandID + '/' )
+        $http.get( 'http://www.gigsmanila.com/api/gig/profile/' + bandID +
+                '/' )
             .success( function ( data, status, headers, config ) {
                 console.log( 'data success' );
                 console.log( data ); // for browser console
@@ -504,50 +505,49 @@ angular.module( 'your_app_name.app.controllers', [] )
         console.log( 'data error' );
 
     } )
+    .controller( 'BandCtrl', function ( $scope, $http, $stateParams ) {
 
-.controller( 'BandCtrl', function ( $scope, $http, $stateParams ) {
+        var startID = $stateParams.startID;
+        $scope.bandlist = "";
+        $scope.startID = startID;
+        $http.get( 'http://www.gigsmanila.com/api/bands/' + startID + '/' )
+            // $http.get('http://www.gigsmanila.com/api/bands/all/')
 
-    var startID = $stateParams.startID;
-    $scope.bandlist = "";
-    $scope.startID = startID;
-    $http.get( 'http://www.gigsmanila.com/api/bands/' + startID + '/' )
-        // $http.get('http://www.gigsmanila.com/api/bands/all/')
-
-    .success( function ( data, status, headers, config ) {
-            console.log( 'data success' );
-            console.log( data ); // for browser console
-            $scope.bandlist = data; // for UI
-        } )
-        .error( function ( data, status, headers, config ) {
-            console.log( 'data error' );
-        } )
-        .then( function ( result ) {
-            things = result.data;
-        } );
-
+        .success( function ( data, status, headers, config ) {
+                console.log( 'data success' );
+                console.log( data ); // for browser console
+                $scope.bandlist = data; // for UI
+            } )
+            .error( function ( data, status, headers, config ) {
+                console.log( 'data error' );
+            } )
+            .then( function ( result ) {
+                things = result.data;
+            } );
 
 
-    /*   this.bandlist = Bands.list(); */
+
+        /*   this.bandlist = Bands.list(); */
 
 
-    /*  $http.get('http://www.gigsmanila.com/api/bands/1/20/').success(function(bands) {
-                                                                            //
-                                                                            var bandlist = _.each(bands, function(band){
-                                                                            //console.log(band);
-                                                                            return band;
-                                                                        });
+        /*  $http.get('http://www.gigsmanila.com/api/bands/1/20/').success(function(bands) {
+                                                                                //
+                                                                                var bandlist = _.each(bands, function(band){
+                                                                                //console.log(band);
+                                                                                return band;
+                                                                            });
 
 
-                                                                        $scope.result = "";
-                                                                    }) */
-    /*
+                                                                            $scope.result = "";
+                                                                        }) */
+        /*
 
-    $scope.bandlist = ;
-    console.log($scope.bandlist);
-    return $scope.bandlist; */
+        $scope.bandlist = ;
+        console.log($scope.bandlist);
+        return $scope.bandlist; */
 
 
-} )
+    } )
 
 .controller( 'BandMainCtrl', function ( $scope, $http, $stateParams ) {
 
@@ -564,7 +564,8 @@ angular.module( 'your_app_name.app.controllers', [] )
         var bandID = $stateParams.bandID;
 
         $scope.bandID = bandID;
-        $http.get( 'http://www.gigsmanila.com/api/band/profile/' + bandID + '/' )
+        $http.get( 'http://www.gigsmanila.com/api/band/profile/' + bandID +
+                '/' )
             .success( function ( data, status, headers, config ) {
                 console.log( 'data success' );
                 console.log( data ); // for browser console
@@ -582,71 +583,47 @@ angular.module( 'your_app_name.app.controllers', [] )
 
     } )
 
-.controller( 'VenueCtrl', function ( $scope, $http, $ionicLoading ) {
+.controller( 'VenueCtrl', function ( $scope, $http, $ionicLoading,
+    $cordovaGeolocation ) {
 
-    $scope.positions = [];
-    $scope.windows = [];
-    $scope.showInfo = false;
-    $scope.info = {
-        id: 123,
-        name: 'asdf',
-        date: 'asdf',
-        time: 'asdf',
-        admission: 'asdf',
-        venue: {
-            id: 0,
-            name: 'asdf'
-        },
-        bands: [ 'asdf' ]
+    var options = {
+        timeout: 10000,
+        enableHighAccuracy: true
     };
 
-    $ionicLoading.show( {
-        template: 'Loading...'
-    } );
-
-    $scope.$on( 'mapInitialized', function ( event, map ) {
-        $scope.map = map;
-        google.maps.event.addListener( map, 'center_changed',
-            function () {
-                $scope.addMarkersOnMap( map.getCenter().lat(),
-                    map.getCenter().lng() );
-            } );
-        $scope.centerOnMe();
-    } );
-
-    $scope.showInfoWindow = function ( event, info ) {
-        console.log( info );
-    };
-
-    $scope.centerOnMe = function () {
-
-        $scope.positions = [ {
-            lat: 14,
-            lng: 121
-                                                                        } ];
-        $scope.windows = [];
-        $scope.showInfo = false;
-
-        $scope.info = {
-            id: 123,
-            name: 'asdf',
-            date: 'asdf',
-            time: 'asdf',
-            admission: 'asdf',
-            venue: {
-                id: 0,
-                name: 'asdf'
-            },
-            bands: [ 'asdf' ]
-        };
-
-        navigator.geolocation.getCurrentPosition( function (
+    $cordovaGeolocation.getCurrentPosition( options ).then( function (
             position ) {
-            console.log( position );
+            $scope.positions = [];
+            var latLng = new google.maps.LatLng( position.coords.latitude,
+                position.coords.longitude );
+
+            var mapOptions = {
+                center: latLng,
+                zoom: 15,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            $scope.map = new google.maps.Map( document.getElementById(
+                "map" ), mapOptions );
+
+            var meMarker = new google.maps
+                .Marker( {
+                    position: latLng,
+                    map: $scope.map,
+                    icon: 'img/pin/pin-map-green.png'
+                } );
+
             var pos = new google.maps.LatLng( {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             } );
+
+
+            var $lastlatLng = new google.maps.LatLng( $scope.map.getCenter()
+                .lat(),
+                $scope.map.getCenter().lng() );
+            $scope.lastLoc = $lastlatLng;
+
             $scope.positions.push( {
                 lat: pos.lat(),
                 lng: pos.lng()
@@ -656,79 +633,188 @@ angular.module( 'your_app_name.app.controllers', [] )
 
 
             // $ionicLoading.hide();
+            // } );
+
+            $scope.positions = [];
+            $scope.windows = [];
+            $scope.showInfo = false;
+            $scope.loading = false;
+            $scope.lastmove = false;
+            $scope.info = {
+                id: 123,
+                name: 'asdf',
+                date: 'asdf',
+                time: 'asdf',
+                admission: 'asdf',
+                venue: {
+                    id: 0,
+                    name: 'asdf'
+                },
+                bands: [ 'asdf' ]
+            };
+
+            $ionicLoading.show( {
+                template: 'Loading...'
+            } );
+
+            // $scope.$on( 'mapInitialized', function ( event, map ) {
+            //     $scope.map = map;
+            google.maps.LatLng.prototype.distanceFrom = function (
+                latlng ) {
+                var lat = [ this.lat(), latlng.lat() ]
+                var lng = [ this.lng(), latlng.lng() ]
+                var R = 6378137;
+                var dLat = ( lat[ 1 ] - lat[ 0 ] ) * Math.PI /
+                    180;
+                var dLng = ( lng[ 1 ] - lng[ 0 ] ) * Math.PI /
+                    180;
+                var a = Math.sin( dLat / 2 ) * Math.sin( dLat /
+                        2 ) +
+                    Math.cos( lat[ 0 ] * Math.PI / 180 ) * Math
+                    .cos( lat[ 1 ] * Math.PI / 180 ) *
+                    Math.sin( dLng / 2 ) * Math.sin( dLng / 2 );
+                var c = 2 * Math.atan2( Math.sqrt( a ), Math.sqrt(
+                    1 - a ) );
+                var d = R * c;
+                return Math.round( d );
+            }
+
+            google.maps.event.addListener( $scope.map,
+                'center_changed',
+                function () {
+                    if ( $scope.loading ) return;
+
+                    $timenow = new Date();
+                    $limitsec = 2;
+
+                    var $latLngNow = new google.maps.LatLng(
+                        $scope.map.getCenter()
+                        .lat(),
+                        $scope.map.getCenter().lng() );
+
+
+                    var $southWest = $scope.map.getBounds().getSouthWest();
+                    var $centerLoc = $scope.map.getCenter();
+
+                    $limitMeters = ( $southWest.distanceFrom(
+                        $centerLoc ) * 2 );
+
+                    if ( parseFloat( $scope.lastLoc.distanceFrom(
+                            $latLngNow ) ) <
+                        parseFloat( ( $limitMeters ) ) )
+                        return;
+
+
+                    $scope.addMarkersOnMap( $scope.map.getCenter()
+                        .lat(),
+                        $scope.map.getCenter().lng() );
+                } );
+
+
+        },
+        function ( error ) {
+            console.log( "Could not get location" );
         } );
 
+    $scope.showInfoWindow = function ( event, info ) {
+        console.log( info );
     };
 
 
-
     $scope.addMarkersOnMap = function ( lat, lng ) {
-        $ionicLoading.show( {
-            template: 'Getting data...'
-        } );
-        $http.get( 'http://www.gigsmanila.com/api/gigs/' + lat +
+        $scope.loading = true;
+
+        var myLatlng = new google.maps
+            .LatLng(
+                parseFloat( lat ),
+                parseFloat( lng ) );
+
+        $scope.lastLoc = myLatlng;
+
+        $http.get(
+                'http://www.gigsmanila.com/api/gigs/' +
+                lat +
                 '/' + lng + '/' )
-            .success( function ( data, status, headers, config ) {
+            .success( function ( data, status, headers,
+                config ) {
                 //$scope.bandlist = data; // for UI
                 // $scope.band = data;
-
+                $scope.lastmove = new Date();
                 $scope.positions = [];
 
                 if ( data.status == "OK" ) {
                     for ( var i in data.results ) {
                         var id = $scope.positions.push( {
-                            id: data.results[ i ].id,
-                            lat: data.results[ i ].location
-                                .lat,
-                            lng: data.results[ i ].location
-                                .lng,
-                            info: data.results[ i ]
-                        } );
-                        data.results[ i ].markerId = id;
-                        var myLatlng = new google.maps.LatLng(
-                            parseFloat( data.results[ i ].location
-                                .lat ), parseFloat( data.results[
+                            id: data.results[
+                                i ].id,
+                            lat: data.results[
                                     i ].location
-                                .lng ) );
-
+                                .lat,
+                            lng: data.results[
+                                    i ].location
+                                .lng,
+                            info: data.results[
+                                i ]
+                        } );
+                        data.results[ i ].markerId =
+                            id;
+                        var myLatlng = new google.maps
+                            .LatLng(
+                                parseFloat( data.results[
+                                        i ].location
+                                    .lat ),
+                                parseFloat( data.results[
+                                        i ].location
+                                    .lng ) );
+                        // $scope.lastLoc = myLatlng;
                         var icon = '';
-                        var EnteredDate = data.results[ i ].date;
-                        var date = EnteredDate.substring( 8, 9 );
-                        var month = EnteredDate.substring( 5, 6 );
-                        var year = EnteredDate.substring( 0, 3 );
+                        var EnteredDate = data.results[
+                            i ].date;
+                        var date = EnteredDate.substring(
+                            8, 9 );
+                        var month = EnteredDate.substring(
+                            5, 6 );
+                        var year = EnteredDate.substring(
+                            0, 3 );
 
-                        var myDate = new Date( year, month - 1,
+                        var myDate = new Date( year,
+                            month - 1,
                             date );
 
                         var today = new Date();
 
                         if ( myDate > today ) {
-                            icon = 'img/pin/pin-map-shadow-black.png';
+                            icon =
+                                'img/pin/pin-map-shadow-black.png';
                         } else {
-                            icon = 'img/pin/pin-map-shadow-red.png';
+                            icon =
+                                'img/pin/pin-map-shadow-red.png';
                         }
 
-                        var gigMarker = new google.maps.Marker( {
-                            position: myLatlng,
-                            map: $scope.map,
-                            icon: icon
-                        } );
+                        var gigMarker = new google.maps
+                            .Marker( {
+                                position: myLatlng,
+                                map: $scope.map,
+                                icon: icon
+                            } );
 
-                        gigMarker.id = data.results[ i ].id;
+                        gigMarker.id = data.results[
+                            i ].id;
 
                         google.maps.event.addListener(
                             gigMarker, 'click',
                             function ( index ) {
-                                window.location.assign(
-                                    '#/app/gigs/' +
-                                    this
-                                    .id );
+                                window.location
+                                    .assign(
+                                        '#/app/gigs/' +
+                                        this
+                                        .id );
                             } );
 
-                        // $scope.windows.push(data.results[i]);
                     }
                 }
                 $ionicLoading.hide();
+                $scope.loading = false;
             } );
     }
 

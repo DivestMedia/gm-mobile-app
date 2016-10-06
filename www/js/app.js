@@ -1,9 +1,9 @@
-angular.module('underscore', [])
-.factory('_', function() {
-    return window._; // assumes underscore has already been loaded on the page
-});
+angular.module( 'underscore', [] )
+    .factory( '_', function () {
+        return window._; // assumes underscore has already been loaded on the page
+    } );
 
-angular.module('your_app_name', [
+angular.module( 'your_app_name', [
     'ionic',
     'your_app_name.common.directives',
     'your_app_name.app.services',
@@ -15,36 +15,37 @@ angular.module('your_app_name', [
     'angularMoment',
     'ngCordova',
     'monospaced.elastic',
-    'ngMap',
-])
-.run(function($ionicPlatform) {
-    $ionicPlatform.ready(function() {
-        // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-        // for form inputs)
-        if (window.cordova && window.cordova.plugins.Keyboard) {
-            cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-            cordova.plugins.Keyboard.disableScroll(true);
+    // 'ngMap',
+] )
+    .run( function ( $ionicPlatform ) {
+        $ionicPlatform.ready( function () {
+            // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+            // for form inputs)
+            if ( window.cordova && window.cordova.plugins.Keyboard ) {
+                cordova.plugins.Keyboard.hideKeyboardAccessoryBar(
+                    true );
+                cordova.plugins.Keyboard.disableScroll( true );
 
-        }
-        if (window.StatusBar) {
-            // org.apache.cordova.statusbar required
-            StatusBar.styleDefault();
-        }
-    });
-})
+            }
+            if ( window.StatusBar ) {
+                // org.apache.cordova.statusbar required
+                StatusBar.styleDefault();
+            }
+        } );
+    } )
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config( function ( $stateProvider, $urlRouterProvider ) {
     $stateProvider
 
     //SIDE MENU ROUTES
-    .state('app', {
+        .state( 'app', {
         url: "/app",
         abstract: true,
         templateUrl: "views/app/side-menu.html"
-        // controller: 'AppCtrl'
-    })
+            // controller: 'AppCtrl'
+    } )
 
-    .state('app.feed', {
+    .state( 'app.feed', {
         url: "/feed",
         views: {
             'menuContent': {
@@ -53,19 +54,19 @@ angular.module('your_app_name', [
             }
         },
         resolve: {
-            loggedUser: function(AuthService){
+            loggedUser: function ( AuthService ) {
                 return AuthService.getLoggedUser();
             },
-            feed: function(FeedService){
+            feed: function ( FeedService ) {
                 // Default page is 1
                 var page = 1;
 
-                return FeedService.getFeed(page);
+                return FeedService.getFeed( page );
             }
         }
-    })
+    } )
 
-    .state('app.category_feed', {
+    .state( 'app.category_feed', {
         url: "/category_feed/:categoryId",
         views: {
             'menuContent': {
@@ -74,21 +75,23 @@ angular.module('your_app_name', [
             }
         },
         resolve: {
-            loggedUser: function(AuthService){
+            loggedUser: function ( AuthService ) {
                 return AuthService.getLoggedUser();
             },
-            feed: function(FeedService, $stateParams){
+            feed: function ( FeedService, $stateParams ) {
                 // Default page is 1
                 var page = 1;
-                return FeedService.getFeedByCategory(page, $stateParams.categoryId);
+                return FeedService.getFeedByCategory( page,
+                    $stateParams.categoryId );
             },
-            category: function(CategoryService, $stateParams){
-                return CategoryService.getCategory($stateParams.categoryId);
+            category: function ( CategoryService, $stateParams ) {
+                return CategoryService.getCategory(
+                    $stateParams.categoryId );
             }
         }
-    })
+    } )
 
-    .state('app.trend_feed', {
+    .state( 'app.trend_feed', {
         url: "/trend_feed/:trendId",
         views: {
             'menuContent': {
@@ -97,21 +100,23 @@ angular.module('your_app_name', [
             }
         },
         resolve: {
-            loggedUser: function(AuthService){
+            loggedUser: function ( AuthService ) {
                 return AuthService.getLoggedUser();
             },
-            feed: function(FeedService, $stateParams){
+            feed: function ( FeedService, $stateParams ) {
                 // Default page is 1
                 var page = 1;
-                return FeedService.getFeedByTrend(page, $stateParams.trendId);
+                return FeedService.getFeedByTrend( page,
+                    $stateParams.trendId );
             },
-            trend: function(TrendsService, $stateParams){
-                return TrendsService.getTrend($stateParams.trendId);
+            trend: function ( TrendsService, $stateParams ) {
+                return TrendsService.getTrend( $stateParams
+                    .trendId );
             }
         }
-    })
+    } )
 
-    .state('app.post', {
+    .state( 'app.post', {
         url: "/post/:postId",
         views: {
             'menuContent': {
@@ -120,13 +125,13 @@ angular.module('your_app_name', [
             }
         },
         resolve: {
-            post: function(FeedService, $stateParams){
-                return FeedService.getPost($stateParams.postId);
+            post: function ( FeedService, $stateParams ) {
+                return FeedService.getPost( $stateParams.postId );
             }
         }
-    })
+    } )
 
-    .state('app.profile', {
+    .state( 'app.profile', {
         abstract: true,
         url: '/profile/:userId',
         views: {
@@ -136,33 +141,38 @@ angular.module('your_app_name', [
             }
         },
         resolve: {
-            loggedUser: function(AuthService){
+            loggedUser: function ( AuthService ) {
                 return AuthService.getLoggedUser();
             },
-            user: function(ProfileService, $stateParams){
+            user: function ( ProfileService, $stateParams ) {
                 var profileUserId = $stateParams.userId;
-                return ProfileService.getUserData(profileUserId);
+                return ProfileService.getUserData(
+                    profileUserId );
             },
-            followers: function(ProfileService, $stateParams){
+            followers: function ( ProfileService, $stateParams ) {
                 var profileUserId = $stateParams.userId;
-                return ProfileService.getUserFollowers(profileUserId);
+                return ProfileService.getUserFollowers(
+                    profileUserId );
             },
-            following: function(ProfileService, $stateParams){
+            following: function ( ProfileService, $stateParams ) {
                 var profileUserId = $stateParams.userId;
-                return ProfileService.getUserFollowing(profileUserId);
+                return ProfileService.getUserFollowing(
+                    profileUserId );
             },
-            posts: function(ProfileService, $stateParams){
+            posts: function ( ProfileService, $stateParams ) {
                 var profileUserId = $stateParams.userId;
-                return ProfileService.getUserPosts(profileUserId);
+                return ProfileService.getUserPosts(
+                    profileUserId );
             },
-            pictures: function(ProfileService, $stateParams){
+            pictures: function ( ProfileService, $stateParams ) {
                 var profileUserId = $stateParams.userId;
-                return ProfileService.getUserPictures(profileUserId);
+                return ProfileService.getUserPictures(
+                    profileUserId );
             }
         }
-    })
+    } )
 
-    .state('app.profile.posts', {
+    .state( 'app.profile.posts', {
         url: '/posts',
         views: {
             'profileContent': {
@@ -172,9 +182,9 @@ angular.module('your_app_name', [
                 templateUrl: 'views/app/profile/profile.posts.html'
             }
         }
-    })
+    } )
 
-    .state('app.profile.pics', {
+    .state( 'app.profile.pics', {
         url: '/pics',
         views: {
             'profileContent': {
@@ -184,9 +194,9 @@ angular.module('your_app_name', [
                 templateUrl: 'views/app/profile/profile.pics.html'
             }
         }
-    })
+    } )
 
-    .state('app.profile.followers', {
+    .state( 'app.profile.followers', {
         url: "/followers",
         views: {
             'profileContent': {
@@ -194,9 +204,9 @@ angular.module('your_app_name', [
                 controller: 'ProfileConnectionsCtrl'
             }
         }
-    })
+    } )
 
-    .state('app.profile.following', {
+    .state( 'app.profile.following', {
         url: "/following",
         views: {
             'profileContent': {
@@ -204,9 +214,9 @@ angular.module('your_app_name', [
                 controller: 'ProfileConnectionsCtrl'
             }
         }
-    })
+    } )
 
-    .state('app.browse', {
+    .state( 'app.browse', {
         url: "/browse",
         views: {
             'menuContent': {
@@ -215,16 +225,16 @@ angular.module('your_app_name', [
             }
         },
         resolve: {
-            trends: function(TrendsService){
+            trends: function ( TrendsService ) {
                 return TrendsService.getTrends();
             },
-            categories: function(CategoryService){
+            categories: function ( CategoryService ) {
                 return CategoryService.getCategories();
             }
         }
-    })
+    } )
 
-    .state('app.people', {
+    .state( 'app.people', {
         url: "/people",
         views: {
             'menuContent': {
@@ -233,16 +243,16 @@ angular.module('your_app_name', [
             }
         },
         resolve: {
-            people_suggestions: function(PeopleService){
+            people_suggestions: function ( PeopleService ) {
                 return PeopleService.getPeopleSuggestions();
             },
-            people_you_may_know: function(PeopleService){
+            people_you_may_know: function ( PeopleService ) {
                 return PeopleService.getPeopleYouMayKnow();
             }
         }
-    })
+    } )
 
-    .state('app.settings', {
+    .state( 'app.settings', {
         url: "/settings",
         views: {
             'menuContent': {
@@ -250,39 +260,38 @@ angular.module('your_app_name', [
                 controller: 'SettingsCtrl'
             }
         }
-    })
+    } )
 
 
 
     //AUTH ROUTES
-    .state('facebook-sign-in', {
+    .state( 'facebook-sign-in', {
         url: "/facebook-sign-in",
         templateUrl: "views/auth/facebook-sign-in.html",
         controller: 'WelcomeCtrl'
-    })
+    } )
 
-    .state('dont-have-facebook', {
+    .state( 'dont-have-facebook', {
         url: "/dont-have-facebook",
         templateUrl: "views/auth/dont-have-facebook.html",
         controller: 'WelcomeCtrl'
-    })
+    } )
 
-    .state('create-account', {
+    .state( 'create-account', {
         url: "/create-account",
         templateUrl: "views/auth/create-account.html",
         controller: 'CreateAccountCtrl'
-    })
+    } )
 
-    .state('welcome-back', {
+    .state( 'welcome-back', {
         url: "/welcome-back",
         templateUrl: "views/auth/welcome-back.html",
         controller: 'WelcomeBackCtrl'
-    })
+    } )
 
 
 
-
-    .state('app.gigsmap', {
+    .state( 'app.gigsmap', {
         url: "/gigsmap",
         views: {
             'menuContent': {
@@ -291,50 +300,50 @@ angular.module('your_app_name', [
             }
         },
         resolve: {
-            loggedUser: function(AuthService){
+            loggedUser: function ( AuthService ) {
                 return AuthService.getLoggedUser();
             },
-            feed: function(FeedService){
+            feed: function ( FeedService ) {
                 // Default page is 1
                 var page = 1;
 
-                return FeedService.getFeed(page);
+                return FeedService.getFeed( page );
             }
         }
-    })
+    } )
 
-    .state('app.gigs', {
-        url: "/gigs",
-		
-        views: {
-            'menuContent': {
-                templateUrl: "views/app/gigs.html",
-                controller: "GigsCtrl"
+    .state( 'app.gigs', {
+            url: "/gigs",
+
+            views: {
+                'menuContent': {
+                    templateUrl: "views/app/gigs.html",
+                    controller: "GigsCtrl"
+                }
             }
-        }
-    })
-	.state('app.gigsadded', {
-        url: "/gigsadded",
-		 
-        views: {
-            'menuContent': {
-                templateUrl: "views/app/gigsadded.html",
-                controller: "GigsAddedCtrl"
+        } )
+        .state( 'app.gigsadded', {
+            url: "/gigsadded",
+
+            views: {
+                'menuContent': {
+                    templateUrl: "views/app/gigsadded.html",
+                    controller: "GigsAddedCtrl"
+                }
             }
-        }
-    })
-	.state('app.gigspast', {
-        url: "/gigspast",
-		 
-        views: {
-            'menuContent': {
-                templateUrl: "views/app/gigspast.html",
-                controller: "GigsPastCtrl"
+        } )
+        .state( 'app.gigspast', {
+            url: "/gigspast",
+
+            views: {
+                'menuContent': {
+                    templateUrl: "views/app/gigspast.html",
+                    controller: "GigsPastCtrl"
+                }
             }
-        }
-    })
-	
-	.state('app.gigsinfo', {
+        } )
+
+    .state( 'app.gigsinfo', {
         url: "/gigs/:startID",
         views: {
             'menuContent': {
@@ -342,10 +351,10 @@ angular.module('your_app_name', [
                 controller: "GigsInfoCtrl"
             }
         }
-    })
-	
+    } )
 
-    .state('app.venue', {
+
+    .state( 'app.venue', {
         url: "/venue",
         views: {
             'menuContent': {
@@ -353,49 +362,50 @@ angular.module('your_app_name', [
                 controller: "VenueCtrl"
             }
         }
-    })
+    } )
 
 
-    .state('app.bandmain', {
+    .state( 'app.bandmain', {
         url: "/band",
         views: {
             'menuContent': {
                 templateUrl: "views/app/bandmain.html",
-				controller: "BandMainCtrl"
+                controller: "BandMainCtrl"
             }
         }
-    })
+    } )
 
-    .state('app.band', {
+    .state( 'app.band', {
         url: "/band/:startID",
         views: {
             'menuContent': {
                 templateUrl: "views/app/band.html",
                 controller: "BandCtrl"
             }
-        }/*  ,
-        resolve: {
-        Bandlist: function(Bands){
-        return Bands.list();
-    }
-}   */
-})
-
-
-.state('app.bandprofile', {
-    url: "/band-profile/:bandID",
-    views: {
-        'menuContent': {
-            templateUrl: "views/app/band-profile.html",
-            controller: "BandProfileCtrl"
         }
-    }
-})
+        /*  ,
+                resolve: {
+                Bandlist: function(Bands){
+                return Bands.list();
+            }
+        }   */
+    } )
 
-;
+
+    .state( 'app.bandprofile', {
+        url: "/band-profile/:bandID",
+        views: {
+            'menuContent': {
+                templateUrl: "views/app/band-profile.html",
+                controller: "BandProfileCtrl"
+            }
+        }
+    } )
+
+    ;
 
 
 
-// if none of the above states are matched, use this as the fallback
-$urlRouterProvider.otherwise('/facebook-sign-in');
-});
+    // if none of the above states are matched, use this as the fallback
+    $urlRouterProvider.otherwise( '/facebook-sign-in' );
+} );
