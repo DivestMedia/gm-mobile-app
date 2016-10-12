@@ -426,7 +426,7 @@ angular.module( 'your_app_name.app.controllers', [] )
 .controller( 'MapCtrl', function ( $scope ) {
 
     } )
-    .controller( 'GigsCtrl', function ( $scope, $http, $stateParams ) {
+    .controller( 'GigsCtrl', function ( $scope, $http, $stateParams,$ionicActionSheet,$cordovaCalendar ) {
 
         var startID = $stateParams.startID;
         $scope.bandlist = "";
@@ -443,6 +443,57 @@ angular.module( 'your_app_name.app.controllers', [] )
             .then( function ( result ) {
                 things = result.data;
             } );
+
+
+            $scope.showAlert = function(data) {
+                console.log(data)
+            //    var alertPopup = $ionicPopup.alert({
+            //      title: data.title,
+            //      template: 'It might taste good'
+            //    });
+
+               var hideSheet = $ionicActionSheet.show({
+                 buttons: [
+                   { text: 'Add to Calendar' }
+                 ],
+                //  destructiveText: 'Delete',
+                 titleText: data.title,
+                 cancelText: 'Cancel',
+                 cancel: function() {
+                      // add cancel code..
+                    },
+                 buttonClicked: function(index) {
+                     console.log(index);
+                     switch (index) {
+                         case 0:
+
+                         var datestring = '';
+                         var timestring = (data.time).split(' ')[0];
+                         datestring = data.date + 'T' + timestring + ':00';
+
+                         $cordovaCalendar.createEventWithOptions({
+                                title: data.title,
+                                location: data.venue + ' , ' + data.city,
+                                notes: "Bands : " + data.bands,
+                                startDate: new Date(datestring),
+                                endDate: new Date(datestring)
+                            }).then(function (result) {
+                            // success
+                            console.log(result);
+                            }, function (err) {
+                            // error
+                            console.log(result);
+                            });
+
+                             break;
+                         default:
+
+                     }
+                   return true;
+                 }
+               });
+
+ };
 
     } )
     .controller( 'GigsAddedCtrl', function ( $scope, $http, $stateParams ) {

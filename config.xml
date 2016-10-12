@@ -2,10 +2,10 @@
 <widget id="com.startapplabs.ionSocialApp" version="1.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>GigsManila</name>
     <description>
-      GigsManila Mobile App
+        GigsManila Mobile App
     </description>
     <author email="contact@gigsManila.com" href="https://gigsManila.com">
-      GigsManila
+        GigsManila
     </author>
     <content src="index.html" />
     <access origin="*" />
@@ -79,4 +79,9 @@
     <plugin name="cordova-plugin-statusbar" spec="~2.2.0" />
     <plugin name="cordova-plugin-splashscreen" spec="~3.0.0" />
     <plugin name="ionic-plugin-keyboard" spec="~1.0.9" />
+    <plugin name="cordova-plugin-calendar" />
+    <preference name="android-build-tool" value="gradle" />
+    <feature name="Calendar">
+        <param name="android-package" value="nl.xservices.plugins.Calendar" />
+    </feature>
 </widget>
