@@ -479,10 +479,18 @@ angular.module( 'your_app_name.app.controllers', [] )
                                 endDate: new Date(datestring)
                             }).then(function (result) {
                             // success
-                            console.log(result);
+                            var alertPopup = $ionicPopup.alert({
+                             title: 'Don\'t eat that!',
+                             template: 'It might taste good'+result.toString()
+                           });
+
                             }, function (err) {
                             // error
-                            console.log(result);
+                            var alertPopup = $ionicPopup.alert({
+                             title: 'Don\'t eat that!',
+                             template: 'It might taste good'+result.toString()
+                           });
+
                             });
 
                              break;
