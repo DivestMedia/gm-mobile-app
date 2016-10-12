@@ -426,7 +426,7 @@ angular.module( 'your_app_name.app.controllers', [] )
 .controller( 'MapCtrl', function ( $scope ) {
 
     } )
-    .controller( 'GigsCtrl', function ( $scope, $http, $stateParams,$ionicActionSheet,$cordovaCalendar ) {
+    .controller( 'GigsCtrl', function ( $scope, $http, $stateParams,$ionicActionSheet,$cordovaCalendar,$ionicPopup ) {
 
         var startID = $stateParams.startID;
         $scope.bandlist = "";
@@ -471,7 +471,7 @@ angular.module( 'your_app_name.app.controllers', [] )
                          var timestring = (data.time).split(' ')[0];
                          datestring = data.date + 'T' + timestring + ':00';
 
-                         $cordovaCalendar.createEventWithOptions({
+                       /*   $cordovaCalendar.createEventWithOptions({
                                 title: data.title,
                                 location: data.venue + ' , ' + data.city,
                                 notes: "Bands : " + data.bands,
@@ -491,8 +491,29 @@ angular.module( 'your_app_name.app.controllers', [] )
                              template: 'It might taste good'+result.toString()
                            });
 
-                            });
+                            }); */
 
+							 $cordovaCalendar.createEvent({
+            title: 'Space Race',
+            location: 'The Moon',
+            notes: 'Bring sandwiches',
+            startDate: new Date(2016, 10, 15, 18, 30, 0, 0, 0),
+            endDate: new Date(2016, 10, 17, 12, 0, 0, 0, 0)
+        }).then(function (result) {
+            console.log("Event created successfully");
+			var alertPopup = $ionicPopup.alert({
+                             title: 'Don\'t eat that!',
+                             template: 'It might taste good'+result.toString()
+                           });
+        }, function (err) {
+            console.error("There was an error: " + err);
+			var alertPopup = $ionicPopup.alert({
+                             title: 'Error Don\'t eat that!',
+                             template: 'It might taste good'+result.toString()
+                           });
+        });
+							
+							
                              break;
                          default:
 
